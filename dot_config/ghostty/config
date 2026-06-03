@@ -1,0 +1,19 @@
+# Ghostty Configuration - Shared Core Configuration
+# Managed by GNU Stow - changes here sync across machines
+
+# Window Styling
+background = #000000
+background-opacity = 0.5
+background-blur = 20
+
+# Typography
+font-family = "Hack Nerd Font"
+font-size = 12
+
+# Shell & Features
+shell-integration = zsh
+
+# UI Aesthetics
+window-padding-x = 8
+window-padding-y = 8
+confirm-close-surface = false

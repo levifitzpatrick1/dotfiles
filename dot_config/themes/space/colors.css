@@ -1,0 +1,8 @@
+@define-color primary #d0bcff;
+@define-color on_primary #07001f;
+@define-color primary_container rgba(208, 188, 255, 0.18);
+@define-color background rgba(7, 0, 31, 0.72);
+@define-color surface rgba(24, 18, 43, 0.68);
+@define-color text #e6e1e5;
+@define-color subtext #cac4d0;
+@define-color border rgba(208, 188, 255, 0.28);

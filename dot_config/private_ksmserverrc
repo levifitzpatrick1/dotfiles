@@ -1,0 +1,17 @@
+[LegacySession: saved at previous logout]
+clientMachine1=localhost
+command1=\\0
+count=1
+
+[Session: saved at previous logout]
+clientId1=10c3d07272000178009056100000011450298
+clientId2=10c3d07272000178027107800000034870001
+count=2
+program1=zen
+program2=/usr/lib/DiscoverNotifier
+restartCommand1=/opt/zen-browser-bin/zen,--sm-client-id,10c3d07272000178009056100000011450298
+restartCommand2=/usr/lib/DiscoverNotifier,-session,10c3d07272000178027107800000034870001_1780290529_86512
+restartStyleHint1=0
+restartStyleHint2=0
+userId1=levi
+userId2=levi

@@ -1,0 +1,13 @@
+{
+  "primary": "#d8c7a5",
+  "onPrimary": "#11130f",
+  "primaryContainer": "rgba(216, 199, 165, 0.18)",
+  "background": "rgba(17, 19, 15, 0.85)",
+  "surface": "rgba(43, 37, 29, 0.6)",
+  "text": "#e6e1e5",
+  "subtext": "#a6afb7",
+  "border": "rgba(255, 255, 255, 0.08)",
+  "warning": "#fab387",
+  "critical": "#f38ba8",
+  "fontFamily": "Comfortaa"
+}

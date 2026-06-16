@@ -26,13 +26,8 @@ button:focus,
 button:hover {
   background-color: rgba(255, 255, 255, 0.22); /* Brighter background on hover */
   border-color: #ffffff;
-  color: #ffffff; /* Fade in text label on hover */
-  background-position: center 30%; /* Shift icon up to accommodate text */
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.35); /* More prominent glow */
-}
-
-#lock {
-  background-image: url("/home/levi/.config/wlogout/icons/lock.svg");
+  color: transparent; /* Keep text hidden */
+  background-position: center; /* Keep icon perfectly centered */
 }
 
 #logout {

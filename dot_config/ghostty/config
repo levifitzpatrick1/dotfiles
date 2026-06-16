@@ -8,5 +8,5 @@ confirm-close-surface = false
 
 shell-integration = zsh
 
-font-family = "SpaceMono Nerd Font"
+font-family = "Hack Nerd Font"
 font-size = 25

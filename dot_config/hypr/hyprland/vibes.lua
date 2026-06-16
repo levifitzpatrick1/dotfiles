@@ -32,7 +32,7 @@ hl.config({
     },
 
     animations = {
-        enabled = false,
+        enabled = true,
     },
 
     misc = {
@@ -41,13 +41,12 @@ hl.config({
     },
 })
 
-hl.curve("overshot", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
-hl.curve("smoothOut", { type = "bezier", points = { { 0.36, 0 }, { 0.66, -0.56 } } })
-hl.curve("easeInOut", { type = "bezier", points = { { 0.65, 0 }, { 0.35, 1 } } })
+hl.curve("snappy", { type = "bezier", points = { { 0.2, 1.0 }, { 0.2, 1.0 } } })
+hl.curve("easeInOut", { type = "bezier", points = { { 0.4, 0.0 }, { 0.2, 1.0 } } })
 
-hl.animation({ leaf = "windows", enabled = true, speed = 5, bezier = "overshot", style = "slide" })
-hl.animation({ leaf = "windowsOut", enabled = true, speed = 4, bezier = "smoothOut", style = "slide" })
-hl.animation({ leaf = "windowsMove", enabled = true, speed = 4, bezier = "easeInOut" })
-hl.animation({ leaf = "border", enabled = true, speed = 10, bezier = "default" })
-hl.animation({ leaf = "fade", enabled = true, speed = 4, bezier = "default" })
-hl.animation({ leaf = "workspaces", enabled = true, speed = 5, bezier = "overshot", style = "slide" })
+hl.animation({ leaf = "windows", enabled = true, speed = 3, bezier = "snappy", style = "slide" })
+hl.animation({ leaf = "windowsOut", enabled = true, speed = 3, bezier = "snappy", style = "slide" })
+hl.animation({ leaf = "windowsMove", enabled = true, speed = 3, bezier = "easeInOut" })
+hl.animation({ leaf = "border", enabled = true, speed = 5, bezier = "default" })
+hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "snappy" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 4, bezier = "snappy", style = "slide" })

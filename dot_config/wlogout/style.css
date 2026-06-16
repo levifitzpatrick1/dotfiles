@@ -1,50 +1,47 @@
 * {
   font-family: "Inter", sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
 }
 
 window {
-  background-color: rgba(30, 30, 46, 0.75);
+  background-color: rgba(15, 15, 23, 0.85);
 }
 
 button {
-  color: #cdd6f4;
-  background-color: rgba(24, 24, 37, 0.8);
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.06);
   outline-style: none;
-  border: 2px solid rgba(180, 190, 254, 0.1);
-  border-radius: 24px;
-  margin: 12px;
-  padding: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px; /* Pill shaped buttons */
+  margin: 16px;
+  padding: 12px;
   background-repeat: no-repeat;
-  background-position: center 38%;
-  background-size: 32%;
+  background-position: center 35%;
+  background-size: 30%;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 button:focus,
 button:hover {
-  background-color: rgba(203, 166, 247, 0.2);
-  border-color: #cba6f7;
-  color: #cba6f7;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
 #lock {
-  background-image: url("/usr/share/wlogout/assets/lock.svg");
+  background-image: url("/home/levi/.config/wlogout/icons/lock.svg");
 }
 
 #logout {
-  background-image: url("/usr/share/wlogout/assets/logout.svg");
-}
-
-#suspend {
-  background-image: url("/usr/share/wlogout/assets/suspend.svg");
+  background-image: url("/home/levi/.config/wlogout/icons/logout.svg");
 }
 
 #reboot {
-  background-image: url("/usr/share/wlogout/assets/reboot.svg");
+  background-image: url("/home/levi/.config/wlogout/icons/reboot.svg");
 }
 
 #shutdown {
-  background-image: url("/usr/share/wlogout/assets/shutdown.svg");
+  background-image: url("/home/levi/.config/wlogout/icons/shutdown.svg");
 }

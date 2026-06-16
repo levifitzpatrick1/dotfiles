@@ -10,7 +10,7 @@ hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("swaync-client -t -sw"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd([[xdg-open "$HOME"]]))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("xdg-open https://duckduckgo.com/"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
-hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("wlogout"))
+hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("pidof wlogout && killall wlogout || wlogout"))
 
 hl.bind("Print", hl.dsp.exec_cmd(screenshot_full))
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(screenshot_region))

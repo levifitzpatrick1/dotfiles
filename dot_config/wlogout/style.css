@@ -5,30 +5,30 @@
 }
 
 window {
-  background-color: rgba(15, 15, 23, 0.5); /* Less opaque to let the background blur look rich and deep */
-  padding: 480px 400px; /* Squeeze the grid layout to the center of the screen */
+  background-color: rgba(15, 15, 23, 0.4); /* Subtle overlay to allow deep background blur */
 }
 
 button {
-  color: #ffffff;
+  color: transparent; /* Hide text by default for a clean icon-only look */
   background-color: rgba(255, 255, 255, 0.08);
   outline-style: none;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  border-radius: 9999px; /* Force perfect pill shape */
-  margin: 15px 30px; /* Horizontal spacing helps form the pill aspect ratio */
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px; /* Perfect pill shape */
+  margin: 15px 20px;
   padding: 10px;
   background-repeat: no-repeat;
-  background-position: center 30%;
-  background-size: 26%;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  background-position: center; /* Center the white icon */
+  background-size: 32%;
+  transition: all 0.2s ease-in-out;
 }
 
 button:focus,
 button:hover {
   background-color: rgba(255, 255, 255, 0.18);
   border-color: #ffffff;
-  color: #ffffff;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  color: #ffffff; /* Fade in text label on hover */
+  background-position: center 30%; /* Shift icon up to accommodate text */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
 }
 
 #lock {

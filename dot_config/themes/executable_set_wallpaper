@@ -1,0 +1,29 @@
+#!/bin/bash
+set -eu
+
+if [ -z "${1:-}" ]; then
+  echo "Usage: set_wallpaper <path/to/wallpaper.jpg>"
+  exit 1
+fi
+
+wallpaper_path="$1"
+
+# Generate theme from the image
+python3 "$HOME/.config/themes/generate_theme.py" "$wallpaper_path"
+
+# Reload wallpaper in hyprpaper if running
+if pgrep -x hyprpaper >/dev/null; then
+  hyprctl hyprpaper unload all || true
+  hyprctl hyprpaper preload "$HOME/.config/themes/current/background.jpg" || true
+  hyprctl hyprpaper wallpaper "DP-2,$HOME/.config/themes/current/background.jpg" || true
+fi
+
+# Reload waybar (signals waybar to reload style/css)
+killall -USR2 waybar || true
+
+# Reload swaync client if running
+if pgrep -x swaync >/dev/null; then
+  swaync-client -R || true
+fi
+
+echo "Wallpaper and theme applied successfully!"

@@ -1,23 +1,17 @@
+/* Rofi Launcher Config - Clean Modern Glassmorphism */
+
+@import "~/.config/themes/current/colors.rasi"
+
 * {
-    font: "Iosevka Nerd Font 12";
-    background: #1e1e2eff;
-    background-alt: #181825ff;
-    foreground: #cdd6f4ff;
-    selected: #cba6f7ff;
-    active: #89b4faff;
-    urgent: #f38ba8ff;
-    background-soft: #313244ff;
-    background-hover: #45475aff;
-    foreground-muted: #a6adc8ff;
-    edge: #b4befeff;
-    radius: 12px;
+    font: "Inter 12";
+    radius: 16px;
 }
 
 window {
     location: center;
     anchor: center;
-    width: 680px;
-    border: 1px;
+    width: 650px;
+    border: 2px;
     border-color: @edge;
     border-radius: @radius;
     background-color: @background;
@@ -25,26 +19,25 @@ window {
 }
 
 mainbox {
-    padding: 18px;
-    spacing: 12px;
+    padding: 24px;
+    spacing: 16px;
     background-color: transparent;
     children: [ "inputbar", "message", "listview" ];
 }
 
 inputbar {
-    padding: 12px 14px;
-    spacing: 10px;
+    padding: 14px 18px;
+    spacing: 12px;
     border: 1px;
-    border-color: @background-hover;
+    border-color: @edge;
     border-radius: @radius;
-    background-color: @background-soft;
+    background-color: @background-alt;
     text-color: @foreground;
     children: [ "prompt", "entry" ];
 }
 
 prompt {
     enabled: true;
-    padding: 0px 4px 0px 0px;
     background-color: transparent;
     text-color: @selected;
 }
@@ -52,7 +45,7 @@ prompt {
 entry {
     background-color: transparent;
     text-color: @foreground;
-    placeholder: "Search apps, commands, files";
+    placeholder: "Search applications, files, settings...";
     placeholder-color: @foreground-muted;
     cursor: text;
 }
@@ -66,7 +59,7 @@ message {
 }
 
 textbox {
-    padding: 10px 12px;
+    padding: 12px 16px;
     border-radius: @radius;
     background-color: @background-soft;
     text-color: @foreground;
@@ -80,16 +73,16 @@ listview {
     cycle: true;
     dynamic: true;
     scrollbar: false;
-    spacing: 6px;
-    margin: 0px;
+    spacing: 8px;
+    margin: 4px 0px 0px 0px;
     padding: 0px;
     background-color: transparent;
     text-color: @foreground;
 }
 
 element {
-    padding: 10px 12px;
-    spacing: 12px;
+    padding: 12px 16px;
+    spacing: 16px;
     border: 0px;
     border-radius: @radius;
     background-color: transparent;
@@ -109,31 +102,33 @@ element alternate.normal {
 
 element selected.normal {
     background-color: @background-hover;
-    text-color: @foreground;
+    text-color: @selected; /* Highlight text using primary/selected color! */
+    border: 1px;
+    border-color: @edge;
 }
 
 element normal.active {
-    background-color: @background-hover;
+    background-color: transparent;
     text-color: @active;
 }
 
 element alternate.active {
-    background-color: @background-hover;
+    background-color: transparent;
     text-color: @active;
 }
 
 element selected.active {
     background-color: @background-hover;
-    text-color: @active;
+    text-color: @selected;
 }
 
 element normal.urgent {
-    background-color: @background-hover;
+    background-color: transparent;
     text-color: @urgent;
 }
 
 element alternate.urgent {
-    background-color: @background-hover;
+    background-color: transparent;
     text-color: @urgent;
 }
 
@@ -143,7 +138,7 @@ element selected.urgent {
 }
 
 element-icon {
-    size: 32px;
+    size: 28px;
     background-color: transparent;
     text-color: inherit;
 }
@@ -155,8 +150,8 @@ element-text {
 }
 
 error-message {
-    padding: 12px;
-    border: 1px;
+    padding: 16px;
+    border: 2px;
     border-color: @urgent;
     border-radius: @radius;
     background-color: @background;

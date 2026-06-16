@@ -1,3 +1,5 @@
+@import url("/home/levi/.config/themes/current/colors.css");
+
 * {
   font-family: "Inter", sans-serif;
   font-size: 14px;
@@ -5,14 +7,14 @@
 }
 
 window {
-  background-color: rgba(10, 10, 15, 0.8); /* Darker and more opaque overlay to create strong contrast with desktop */
+  background-color: @background; /* Dynamic blurred background overlay */
 }
 
 button {
-  color: transparent; /* Hide text by default for a clean icon-only look */
-  background-color: rgba(255, 255, 255, 0.1); /* Higher contrast button background */
+  color: transparent; /* Keep text transparent */
+  background-color: @surface; /* Dynamic theme surface color */
   outline-style: none;
-  border: 2px solid rgba(255, 255, 255, 0.25); /* Much more visible border outline */
+  border: 2px solid @border; /* Dynamic theme border color */
   border-radius: 9999px; /* Perfect pill shape */
   margin: 15px 20px;
   padding: 10px;
@@ -24,8 +26,8 @@ button {
 
 button:focus,
 button:hover {
-  background-color: rgba(255, 255, 255, 0.22); /* Brighter background on hover */
-  border-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.18);
+  border-color: @primary; /* Highlight border using primary accent color */
   color: transparent; /* Keep text hidden */
   background-position: center; /* Keep icon perfectly centered */
 }

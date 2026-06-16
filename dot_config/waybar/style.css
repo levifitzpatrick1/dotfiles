@@ -1,3 +1,5 @@
+@import url("/home/levi/.config/themes/current/colors.css");
+
 * {
   border: none;
   border-radius: 0;
@@ -9,7 +11,7 @@
 
 window#waybar {
   background-color: transparent;
-  color: #cdd6f4;
+  color: @text;
 }
 
 window#waybar.hidden {
@@ -17,9 +19,9 @@ window#waybar.hidden {
 }
 
 tooltip {
-  background: rgba(30, 30, 46, 0.94);
-  color: #cdd6f4;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: @surface;
+  color: @text;
+  border: 1px solid @border;
   border-radius: 12px;
 }
 
@@ -28,26 +30,26 @@ tooltip {
 #custom-media,
 #taskbar,
 #tray {
-  background: rgba(30, 30, 46, 0.85);
-  color: #cdd6f4;
+  background: @background;
+  color: @text;
   padding: 0 10px;
   margin: 2px 2px;
   border-radius: 20px;
 }
 
 #clock {
-  color: #89b4fa;
+  color: @primary;
 }
 
 #workspaces {
-  background: rgba(30, 30, 46, 0.85);
+  background: @background;
   border-radius: 20px;
   margin: 2px 2px;
   padding: 0 4px;
 }
 
 #workspaces button {
-  color: #a6adc8;
+  color: @subtext;
   border-radius: 16px;
   padding: 0 6px;
   margin: 2px;
@@ -58,18 +60,18 @@ tooltip {
 
 #workspaces button:hover {
   background: rgba(255, 255, 255, 0.1);
-  color: #cdd6f4;
+  color: @text;
 }
 
 #workspaces button.active,
 #workspaces button.focused {
-  background: #cba6f7;
-  color: #1e1e2e;
+  background: @primary;
+  color: @background;
 }
 
 #workspaces button.urgent {
   background: #f38ba8;
-  color: #1e1e2e;
+  color: @background;
 }
 
 #taskbar {
@@ -88,7 +90,7 @@ tooltip {
 }
 
 #custom-media {
-  color: #a6e3a1;
+  color: @text;
 }
 
 #pulseaudio.muted,

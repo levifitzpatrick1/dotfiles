@@ -1,0 +1,66 @@
+/* Rofi Theme Selector Config - Beautiful Grid Card View */
+
+@import "~/.config/themes/current/colors.rasi"
+
+* {
+    font: "Inter 12";
+    radius: 16px;
+    background-color: transparent;
+}
+
+window {
+    location: center;
+    anchor: center;
+    width: 760px;
+    height: 320px;
+    border: 2px;
+    border-color: @edge;
+    border-radius: @radius;
+    background-color: @background;
+    transparency: "real";
+}
+
+mainbox {
+    padding: 24px;
+    spacing: 16px;
+    children: [ "listview" ];
+}
+
+listview {
+    columns: 3;
+    lines: 1;
+    spacing: 16px;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+}
+
+element {
+    orientation: vertical;
+    padding: 16px;
+    spacing: 12px;
+    border: 1px;
+    border-color: @edge;
+    border-radius: @radius;
+    background-color: @background-alt;
+    cursor: pointer;
+}
+
+element selected.normal {
+    background-color: @background-hover;
+    border-color: #ffffff;
+    border: 2px;
+}
+
+element-icon {
+    size: 160px; /* Big preview thumbnail */
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}
+
+element-text {
+    font: "Inter Bold 13";
+    text-color: #ffffff;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}

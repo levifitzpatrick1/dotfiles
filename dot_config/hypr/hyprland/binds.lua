@@ -11,6 +11,7 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd([[xdg-open "$HOME"]]))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("xdg-open https://duckduckgo.com/"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("pidof wlogout && killall wlogout || wlogout -b 3 -T 620 -B 620 -L 1150 -R 1150"))
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("$HOME/.config/themes/select_theme"))
 
 hl.bind("Print", hl.dsp.exec_cmd(screenshot_full))
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(screenshot_region))

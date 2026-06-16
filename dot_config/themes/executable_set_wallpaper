@@ -11,8 +11,14 @@ wallpaper_path="$1"
 # Generate theme from the image
 python3 "$HOME/.config/themes/generate_theme.py" "$wallpaper_path"
 
-# Reload wallpaper in hyprpaper if running
-if pgrep -x hyprpaper >/dev/null; then
+# Reload wallpaper in swww or hyprpaper
+if command -v swww >/dev/null 2>&1; then
+  if ! pgrep -x swww-daemon >/dev/null; then
+    swww-daemon --format xrgb &
+    sleep 0.5
+  fi
+  swww img "$HOME/.config/themes/current/background.jpg" --transition-type outer --transition-fps 60 --transition-step 10 || true
+elif pgrep -x hyprpaper >/dev/null; then
   hyprctl hyprpaper unload all || true
   hyprctl hyprpaper preload "$HOME/.config/themes/current/background.jpg" || true
   hyprctl hyprpaper wallpaper "DP-2,$HOME/.config/themes/current/background.jpg" || true

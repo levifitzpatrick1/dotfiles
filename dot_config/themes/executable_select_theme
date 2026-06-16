@@ -1,0 +1,49 @@
+#!/bin/bash
+set -eu
+
+THEME_DIR="$HOME/.config/themes"
+ROFI_THEME="$THEME_DIR/theme_selector.rasi"
+
+# Build the options list for Rofi
+options=""
+while IFS= read -r dir; do
+  dir_name=$(basename "$dir")
+  if [ "$dir_name" = "current" ]; then
+    continue
+  fi
+  # Find any image in the directory
+  img_path=$(find "$dir" -maxdepth 1 -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.jpeg" \) | head -n 1)
+  if [ -n "$img_path" ]; then
+    # Format: Display Name\0icon\x1f/path/to/image
+    display_name="$(echo "${dir_name:0:1}" | tr '[:lower:]' '[:upper:]')${dir_name:1}"
+    options="${options}${display_name}\0icon\x1f${img_path}\n"
+  fi
+done < <(find "$THEME_DIR" -maxdepth 1 -mindepth 1 -type d)
+
+# If no options found, exit
+if [ -z "$options" ]; then
+  notify-send "Theme Selector" "No themes found in $THEME_DIR"
+  exit 1
+fi
+
+# Run Rofi
+selected=$(echo -e -n "$options" | rofi -dmenu -i -p "Select Theme" -theme "$ROFI_THEME")
+
+if [ -z "$selected" ]; then
+  exit 0
+fi
+
+# Find the directory matching the selected name (case-insensitive)
+selected_lower=$(echo "$selected" | tr '[:upper:]' '[:lower:]')
+selected_dir="$THEME_DIR/$selected_lower"
+
+if [ -d "$selected_dir" ]; then
+  # Find the image in that directory
+  img_path=$(find "$selected_dir" -maxdepth 1 -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.jpeg" \) | head -n 1)
+  if [ -n "$img_path" ]; then
+    # Run the set_wallpaper script
+    "$THEME_DIR/set_wallpaper" "$img_path"
+  fi
+else
+  notify-send "Theme Selector" "Theme directory not found: $selected_dir"
+fi

@@ -1,24 +1,50 @@
 * {
-  background-image: none;
-  font-family: Comfortaa, sans-serif;
-  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 window {
-  background-color: rgba(7, 0, 31, 0.74);
+  background-color: rgba(30, 30, 46, 0.75);
 }
 
 button {
-  color: #e6e1e5;
-  background-color: rgba(24, 18, 43, 0.9);
-  border: 1px solid rgba(208, 188, 255, 0.28);
-  border-radius: 8px;
-  margin: 8px;
-  padding: 18px;
+  color: #cdd6f4;
+  background-color: rgba(24, 24, 37, 0.8);
+  outline-style: none;
+  border: 2px solid rgba(180, 190, 254, 0.1);
+  border-radius: 24px;
+  margin: 12px;
+  padding: 10px;
+  background-repeat: no-repeat;
+  background-position: center 38%;
+  background-size: 32%;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 button:focus,
 button:hover {
-  background-color: rgba(208, 188, 255, 0.22);
-  border-color: rgba(208, 188, 255, 0.55);
+  background-color: rgba(203, 166, 247, 0.2);
+  border-color: #cba6f7;
+  color: #cba6f7;
+}
+
+#lock {
+  background-image: url("/usr/share/wlogout/assets/lock.svg");
+}
+
+#logout {
+  background-image: url("/usr/share/wlogout/assets/logout.svg");
+}
+
+#suspend {
+  background-image: url("/usr/share/wlogout/assets/suspend.svg");
+}
+
+#reboot {
+  background-image: url("/usr/share/wlogout/assets/reboot.svg");
+}
+
+#shutdown {
+  background-image: url("/usr/share/wlogout/assets/shutdown.svg");
 }

@@ -10,7 +10,6 @@
     "text": "Logout",
     "keybind": "e"
 }
-
 {
     "label": "reboot",
     "action": "systemctl reboot",

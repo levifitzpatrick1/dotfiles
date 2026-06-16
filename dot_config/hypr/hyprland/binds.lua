@@ -5,7 +5,7 @@ local screenshot_region = [[grim -g "$(slurp)" - | satty --filename -]]
 
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("ghostty"))
 hl.bind(mainMod .. " + Space",
-    hl.dsp.exec_cmd([["$HOME/.config/rofi/launch" -show drun -theme "$HOME/.config/rofi/launcher.rasi"]]))
+    hl.dsp.exec_cmd([["$HOME/.config/rofi/launch" -show combi -modes combi -combi-modi "drun,calc" -theme "$HOME/.config/rofi/launcher.rasi"]]))
 hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("swaync-client -t -sw"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd([[xdg-open "$HOME"]]))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("xdg-open https://duckduckgo.com/"))

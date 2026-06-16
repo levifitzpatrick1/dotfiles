@@ -45,7 +45,7 @@ prompt {
 entry {
     background-color: transparent;
     text-color: @foreground;
-    placeholder: "Search applications, files, settings...";
+    placeholder: "Search apps or calculate math...";
     placeholder-color: @foreground-muted;
     cursor: text;
 }

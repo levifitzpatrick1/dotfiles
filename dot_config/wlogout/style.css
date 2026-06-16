@@ -5,29 +5,30 @@
 }
 
 window {
-  background-color: rgba(15, 15, 23, 0.85);
+  background-color: rgba(15, 15, 23, 0.5); /* Less opaque to let the background blur look rich and deep */
+  padding: 480px 400px; /* Squeeze the grid layout to the center of the screen */
 }
 
 button {
   color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.06);
+  background-color: rgba(255, 255, 255, 0.08);
   outline-style: none;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 40px; /* Pill shaped buttons */
-  margin: 16px;
-  padding: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 9999px; /* Force perfect pill shape */
+  margin: 15px 30px; /* Horizontal spacing helps form the pill aspect ratio */
+  padding: 10px;
   background-repeat: no-repeat;
-  background-position: center 35%;
-  background-size: 30%;
+  background-position: center 30%;
+  background-size: 26%;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 button:focus,
 button:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.18);
   border-color: #ffffff;
   color: #ffffff;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 #lock {

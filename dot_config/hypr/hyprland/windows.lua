@@ -42,7 +42,7 @@ hl.window_rule({
 
 hl.layer_rule({
     name = "shell-blur",
-    match = { namespace = "^(waybar|swaync-control-center|swaync-notification-window)$" },
+    match = { namespace = "^(waybar|swaync-control-center|swaync-notification-window|wlogout)$" },
     blur = true,
     ignore_alpha = 0,
 })

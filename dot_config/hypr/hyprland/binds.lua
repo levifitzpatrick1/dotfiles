@@ -62,3 +62,17 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 5%+"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"), { locked = true, repeating = true })
+
+-- Passthrough / Game Mode submap
+hl.define_submap("passthru", function()
+    -- Keybinds to exit passthru mode
+    hl.bind(mainMod .. " + Escape", hl.dsp.submap("reset"))
+    hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("notify-send -t 1500 'Game Mode' 'Disabled. Global shortcuts restored.'"))
+    hl.bind(mainMod .. " + F12", hl.dsp.submap("reset"))
+    hl.bind(mainMod .. " + F12", hl.dsp.exec_cmd("notify-send -t 1500 'Game Mode' 'Disabled. Global shortcuts restored.'"))
+end)
+
+-- Bind to enter passthru mode
+hl.bind(mainMod .. " + F12", hl.dsp.submap("passthru"))
+hl.bind(mainMod .. " + F12", hl.dsp.exec_cmd("notify-send -t 2000 -u critical 'Game Mode Enabled' 'All global shortcuts disabled. Press ALT+Escape or ALT+F12 to exit.'"))
+

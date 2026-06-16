@@ -8,6 +8,7 @@
   "margin-right": 8,
   "modules-left": [],
   "modules-center": [
+    "hyprland/submap",
     "custom/media",
     "hyprland/workspaces",
     "wlr/taskbar",
@@ -16,6 +17,11 @@
     "clock"
   ],
   "modules-right": [],
+  "hyprland/submap": {
+    "format": "🎮 {}",
+    "max-length": 15,
+    "tooltip": false
+  },
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {

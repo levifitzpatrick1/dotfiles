@@ -39,7 +39,7 @@ inputbar {
 prompt {
     enabled: true;
     background-color: transparent;
-    text-color: @selected;
+    text-color: @foreground;
 }
 
 entry {
@@ -102,39 +102,39 @@ element alternate.normal {
 
 element selected.normal {
     background-color: @background-hover;
-    text-color: @selected; /* Highlight text using primary/selected color! */
+    text-color: #ffffff;
     border: 1px;
     border-color: @edge;
 }
 
 element normal.active {
     background-color: transparent;
-    text-color: @active;
+    text-color: @foreground;
 }
 
 element alternate.active {
     background-color: transparent;
-    text-color: @active;
+    text-color: @foreground;
 }
 
 element selected.active {
     background-color: @background-hover;
-    text-color: @selected;
+    text-color: #ffffff;
 }
 
 element normal.urgent {
-    background-color: transparent;
-    text-color: @urgent;
+    background-color: rgba(243, 139, 168, 0.15);
+    text-color: #ffffff;
 }
 
 element alternate.urgent {
-    background-color: transparent;
-    text-color: @urgent;
+    background-color: rgba(243, 139, 168, 0.15);
+    text-color: #ffffff;
 }
 
 element selected.urgent {
-    background-color: @background-hover;
-    text-color: @urgent;
+    background-color: #f38ba8;
+    text-color: #000000;
 }
 
 element-icon {

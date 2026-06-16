@@ -38,7 +38,7 @@ tooltip {
 }
 
 #clock {
-  color: @primary;
+  color: @text;
 }
 
 #workspaces {
@@ -95,7 +95,7 @@ tooltip {
 
 #pulseaudio.muted,
 #network.disconnected {
-  color: #f38ba8;
+  color: @subtext;
 }
 
 #tray > .passive {
@@ -104,4 +104,12 @@ tooltip {
 
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
+}
+
+#submap {
+  background: #f38ba8;
+  color: #ffffff;
+  padding: 0 10px;
+  margin: 2px 2px;
+  border-radius: 20px;
 }

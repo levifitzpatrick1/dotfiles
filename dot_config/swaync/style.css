@@ -23,7 +23,7 @@
 }
 
 .summary {
-  color: #89b4fa;
+  color: #ffffff;
   font-weight: bold;
 }
 
@@ -43,5 +43,5 @@
 .control-center-clear-all:hover,
 .widget-title button:hover {
   background: rgba(255, 255, 255, 0.15);
-  color: #f38ba8;
+  color: #ffffff;
 }

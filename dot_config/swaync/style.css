@@ -1,45 +1,47 @@
 * {
   font-family: Comfortaa, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .control-center {
-  background: rgba(7, 0, 31, 0.9);
-  border: 1px solid rgba(208, 188, 255, 0.28);
-  border-radius: 8px;
-  color: #e6e1e5;
+  background: rgba(30, 30, 46, 0.94);
+  border: 1px solid rgba(205, 214, 244, 0.1);
+  border-radius: 12px;
+  color: #cdd6f4;
 }
 
 .notification {
-  background: rgba(24, 18, 43, 0.94);
-  border: 1px solid rgba(208, 188, 255, 0.28);
-  border-radius: 8px;
-  color: #e6e1e5;
+  background: rgba(30, 30, 46, 0.98);
+  border: 1px solid rgba(205, 214, 244, 0.1);
+  border-radius: 12px;
+  color: #cdd6f4;
+  margin: 4px;
 }
 
 .notification-content {
-  padding: 10px;
+  padding: 12px;
 }
 
 .summary {
-  color: #f5efff;
-  font-weight: 700;
+  color: #89b4fa;
+  font-weight: bold;
 }
 
 .body {
-  color: #cac4d0;
+  color: #a6adc8;
 }
 
 .close-button,
 .control-center-clear-all,
 .widget-title button {
-  background: rgba(208, 188, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 6px;
-  color: #e6e1e5;
+  color: #cdd6f4;
 }
 
 .close-button:hover,
 .control-center-clear-all:hover,
 .widget-title button:hover {
-  background: rgba(208, 188, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  color: #f38ba8;
 }

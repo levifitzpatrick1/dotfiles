@@ -2,20 +2,14 @@
   border: none;
   border-radius: 0;
   font-family: "Iosevka Nerd Font", "Roboto", "Helvetica", "Arial", sans-serif;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 600;
   min-height: 0;
 }
 
-@define-color surface rgba(31, 31, 31, 0.94);
-@define-color surface_hover #d8d8d8;
-@define-color text #f2f2f2;
-@define-color muted #777777;
-@define-color text_dark #111111;
-@define-color urgent #eb4d4b;
-
 window#waybar {
   background-color: transparent;
-  color: @text;
+  color: #cdd6f4;
 }
 
 window#waybar.hidden {
@@ -23,10 +17,10 @@ window#waybar.hidden {
 }
 
 tooltip {
-  background: rgba(20, 20, 20, 0.96);
-  color: @text;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 10px;
+  background: rgba(30, 30, 46, 0.94);
+  color: #cdd6f4;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
 }
 
 #clock,
@@ -42,116 +36,99 @@ tooltip {
 #taskbar,
 #tray,
 #idle_inhibitor {
-  background: @surface;
-  color: @text;
-  padding: 0 10px;
+  background: rgba(30, 30, 46, 0.85);
+  color: #cdd6f4;
+  padding: 0 14px;
+  margin: 4px 2px;
+  border-radius: 20px;
 }
 
-#idle_inhibitor {
-  border-radius: 20px 0 0 20px;
-}
+/* Group 1: System Info */
+#idle_inhibitor { border-radius: 20px 0 0 20px; margin-right: 0; }
+#pulseaudio { border-radius: 0; margin-left: 0; margin-right: 0; }
+#cpu { border-radius: 0; margin-left: 0; margin-right: 0; }
+#memory { border-radius: 0 20px 20px 0; margin-left: 0; }
 
-#memory {
-  border-radius: 0 20px 20px 0;
-}
-
-#pulseaudio,
-#cpu,
-#network,
-#tray,
-#custom-updater,
-#custom-snip {
-  border-radius: 0;
-}
+/* Group 2: Status & Clock */
+#custom-updater { border-radius: 20px 0 0 20px; margin-right: 0; }
+#custom-snip { border-radius: 0; margin-left: 0; margin-right: 0; }
+#network { border-radius: 0; margin-left: 0; margin-right: 0; }
+#tray { border-radius: 0; margin-left: 0; margin-right: 0; }
+#clock { border-radius: 0 20px 20px 0; margin-left: 0; margin-right: 4px; color: #89b4fa; }
 
 #workspaces {
-  margin: 0 4px;
+  background: rgba(30, 30, 46, 0.85);
+  border-radius: 20px;
+  margin: 4px 2px;
+  padding: 0 4px;
 }
 
 #workspaces button {
-  background: @surface;
-  color: @muted;
-  border-radius: 20px;
-  padding: 0 9px;
-  margin: 0 1px;
+  color: #a6adc8;
+  border-radius: 16px;
+  padding: 0 6px;
+  margin: 2px;
+  transition: all 0.2s ease;
   box-shadow: none;
   text-shadow: none;
-  transition: none;
 }
 
 #workspaces button:hover {
-  background: @surface_hover;
-  color: @text_dark;
-  border-bottom: 3px solid @text_dark;
-  box-shadow: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #cdd6f4;
 }
 
 #workspaces button.active,
 #workspaces button.focused {
-  background: @surface;
-  color: @text;
-}
-
-#workspaces button.active:hover,
-#workspaces button.focused:hover {
-  background: @surface_hover;
-  color: @text_dark;
-  border-bottom: 3px solid @text_dark;
+  background: #cba6f7;
+  color: #1e1e2e;
 }
 
 #workspaces button.urgent {
-  background: @urgent;
-  color: @text_dark;
+  background: #f38ba8;
+  color: #1e1e2e;
 }
 
 #custom-launcher {
+  background: #89b4fa;
+  color: #1e1e2e;
   border-radius: 20px;
-  font-size: 25px;
-  margin-right: 2px;
-  padding: 0 12px;
+  font-size: 18px;
+  margin-left: 4px;
+  padding: 0 16px;
 }
 
-#custom-media {
+#custom-power {
+  background: #f38ba8;
+  color: #1e1e2e;
   border-radius: 20px;
-  margin-left: 5px;
-  margin-right: 5px;
+  font-size: 16px;
+  margin-right: 4px;
+  padding: 0 14px;
 }
 
 #taskbar {
-  border-radius: 20px;
   padding: 0 8px;
 }
 
 #taskbar button {
-  padding: 0 4px;
-  margin: 0 1px;
+  padding: 0 6px;
+  border-radius: 16px;
+  margin: 2px;
   background: transparent;
-  border-radius: 20px;
 }
 
 #taskbar button:hover {
-  background: rgba(255, 255, 255, 0.16);
-  box-shadow: none;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-#custom-power {
-  border-radius: 20px;
-  font-size: 18px;
-  margin-left: 2px;
-  padding: 0 13px;
-}
-
-#custom-updater {
-  border-radius: 20px 0 0 20px;
-}
-
-#custom-snip {
-  font-size: 20px;
+#custom-media {
+  color: #a6e3a1;
 }
 
 #pulseaudio.muted,
 #network.disconnected {
-  color: #ff6b6b;
+  color: #f38ba8;
 }
 
 #tray > .passive {
@@ -160,9 +137,4 @@ tooltip {
 
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
-}
-
-#clock {
-  border-radius: 0 20px 20px 0;
-  margin-right: 4px;
 }

@@ -2,7 +2,7 @@
   border: none;
   border-radius: 0;
   font-family: "Iosevka Nerd Font", "Roboto", "Helvetica", "Arial", sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   min-height: 0;
 }
@@ -24,42 +24,26 @@ tooltip {
 }
 
 #clock,
-#cpu,
-#memory,
 #network,
-#pulseaudio,
-#custom-launcher,
 #custom-media,
-#custom-power,
-#custom-updater,
-#custom-snip,
 #taskbar,
-#tray,
-#idle_inhibitor {
+#tray {
   background: rgba(30, 30, 46, 0.85);
   color: #cdd6f4;
-  padding: 0 14px;
-  margin: 4px 2px;
+  padding: 0 10px;
+  margin: 2px 2px;
   border-radius: 20px;
 }
 
-/* Group 1: System Info */
-#idle_inhibitor { border-radius: 20px 0 0 20px; margin-right: 0; }
-#pulseaudio { border-radius: 0; margin-left: 0; margin-right: 0; }
-#cpu { border-radius: 0; margin-left: 0; margin-right: 0; }
-#memory { border-radius: 0 20px 20px 0; margin-left: 0; }
-
-/* Group 2: Status & Clock */
-#custom-updater { border-radius: 20px 0 0 20px; margin-right: 0; }
-#custom-snip { border-radius: 0; margin-left: 0; margin-right: 0; }
-#network { border-radius: 0; margin-left: 0; margin-right: 0; }
+/* Group: Status & Clock */
+#network { border-radius: 20px 0 0 20px; margin-right: 0; }
 #tray { border-radius: 0; margin-left: 0; margin-right: 0; }
 #clock { border-radius: 0 20px 20px 0; margin-left: 0; margin-right: 4px; color: #89b4fa; }
 
 #workspaces {
   background: rgba(30, 30, 46, 0.85);
   border-radius: 20px;
-  margin: 4px 2px;
+  margin: 2px 2px;
   padding: 0 4px;
 }
 
@@ -87,24 +71,6 @@ tooltip {
 #workspaces button.urgent {
   background: #f38ba8;
   color: #1e1e2e;
-}
-
-#custom-launcher {
-  background: #89b4fa;
-  color: #1e1e2e;
-  border-radius: 20px;
-  font-size: 18px;
-  margin-left: 4px;
-  padding: 0 16px;
-}
-
-#custom-power {
-  background: #f38ba8;
-  color: #1e1e2e;
-  border-radius: 20px;
-  font-size: 16px;
-  margin-right: 4px;
-  padding: 0 14px;
 }
 
 #taskbar {

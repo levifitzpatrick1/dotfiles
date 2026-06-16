@@ -1,27 +1,18 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 35,
+  "height": 28,
   "spacing": 4,
-  "margin-top": 5,
+  "margin-top": 4,
   "margin-left": 8,
   "margin-right": 8,
-  "modules-left": [
-    "idle_inhibitor",
-    "pulseaudio",
-    "cpu",
-    "memory"
-  ],
+  "modules-left": [],
   "modules-center": [
-    "custom/launcher",
     "custom/media",
     "hyprland/workspaces",
-    "wlr/taskbar",
-    "custom/power"
+    "wlr/taskbar"
   ],
   "modules-right": [
-    "custom/updater",
-    "custom/snip",
     "network",
     "tray",
     "clock"

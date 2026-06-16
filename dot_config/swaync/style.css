@@ -1,0 +1,45 @@
+* {
+  font-family: Comfortaa, sans-serif;
+  font-size: 13px;
+}
+
+.control-center {
+  background: rgba(7, 0, 31, 0.9);
+  border: 1px solid rgba(208, 188, 255, 0.28);
+  border-radius: 8px;
+  color: #e6e1e5;
+}
+
+.notification {
+  background: rgba(24, 18, 43, 0.94);
+  border: 1px solid rgba(208, 188, 255, 0.28);
+  border-radius: 8px;
+  color: #e6e1e5;
+}
+
+.notification-content {
+  padding: 10px;
+}
+
+.summary {
+  color: #f5efff;
+  font-weight: 700;
+}
+
+.body {
+  color: #cac4d0;
+}
+
+.close-button,
+.control-center-clear-all,
+.widget-title button {
+  background: rgba(208, 188, 255, 0.18);
+  border-radius: 6px;
+  color: #e6e1e5;
+}
+
+.close-button:hover,
+.control-center-clear-all:hover,
+.widget-title button:hover {
+  background: rgba(208, 188, 255, 0.3);
+}

@@ -1,0 +1,30 @@
+#!/bin/sh
+set -eu
+
+if [ -z "${WAYLAND_DISPLAY:-}" ] && [ -n "${XDG_RUNTIME_DIR:-}" ]; then
+  for socket in "$XDG_RUNTIME_DIR"/wayland-*; do
+    if [ -S "$socket" ]; then
+      export WAYLAND_DISPLAY="${socket##*/}"
+      break
+    fi
+  done
+fi
+
+if [ -z "${HYPRLAND_INSTANCE_SIGNATURE:-}" ] && [ -n "${XDG_RUNTIME_DIR:-}" ]; then
+  for lock in "$XDG_RUNTIME_DIR"/hypr/*/hyprland.lock; do
+    instance_dir="${lock%/hyprland.lock}"
+    if [ -S "$instance_dir/.socket.sock" ]; then
+      export HYPRLAND_INSTANCE_SIGNATURE="${instance_dir##*/}"
+      break
+    fi
+  done
+fi
+
+export XDG_CURRENT_DESKTOP="${XDG_CURRENT_DESKTOP:-Hyprland}"
+export XDG_SESSION_DESKTOP="${XDG_SESSION_DESKTOP:-Hyprland}"
+
+if [ "${XDG_SESSION_TYPE:-}" = "tty" ] || [ -z "${XDG_SESSION_TYPE:-}" ]; then
+  export XDG_SESSION_TYPE=wayland
+fi
+
+exec waybar "$@"

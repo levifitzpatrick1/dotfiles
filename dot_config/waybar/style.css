@@ -1,0 +1,168 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "Iosevka Nerd Font", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 13px;
+  min-height: 0;
+}
+
+@define-color surface rgba(31, 31, 31, 0.94);
+@define-color surface_hover #d8d8d8;
+@define-color text #f2f2f2;
+@define-color muted #777777;
+@define-color text_dark #111111;
+@define-color urgent #eb4d4b;
+
+window#waybar {
+  background-color: transparent;
+  color: @text;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+tooltip {
+  background: rgba(20, 20, 20, 0.96);
+  color: @text;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+}
+
+#clock,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#custom-launcher,
+#custom-media,
+#custom-power,
+#custom-updater,
+#custom-snip,
+#taskbar,
+#tray,
+#idle_inhibitor {
+  background: @surface;
+  color: @text;
+  padding: 0 10px;
+}
+
+#idle_inhibitor {
+  border-radius: 20px 0 0 20px;
+}
+
+#memory {
+  border-radius: 0 20px 20px 0;
+}
+
+#pulseaudio,
+#cpu,
+#network,
+#tray,
+#custom-updater,
+#custom-snip {
+  border-radius: 0;
+}
+
+#workspaces {
+  margin: 0 4px;
+}
+
+#workspaces button {
+  background: @surface;
+  color: @muted;
+  border-radius: 20px;
+  padding: 0 9px;
+  margin: 0 1px;
+  box-shadow: none;
+  text-shadow: none;
+  transition: none;
+}
+
+#workspaces button:hover {
+  background: @surface_hover;
+  color: @text_dark;
+  border-bottom: 3px solid @text_dark;
+  box-shadow: none;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+  background: @surface;
+  color: @text;
+}
+
+#workspaces button.active:hover,
+#workspaces button.focused:hover {
+  background: @surface_hover;
+  color: @text_dark;
+  border-bottom: 3px solid @text_dark;
+}
+
+#workspaces button.urgent {
+  background: @urgent;
+  color: @text_dark;
+}
+
+#custom-launcher {
+  border-radius: 20px;
+  font-size: 25px;
+  margin-right: 2px;
+  padding: 0 12px;
+}
+
+#custom-media {
+  border-radius: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#taskbar {
+  border-radius: 20px;
+  padding: 0 8px;
+}
+
+#taskbar button {
+  padding: 0 4px;
+  margin: 0 1px;
+  background: transparent;
+  border-radius: 20px;
+}
+
+#taskbar button:hover {
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: none;
+}
+
+#custom-power {
+  border-radius: 20px;
+  font-size: 18px;
+  margin-left: 2px;
+  padding: 0 13px;
+}
+
+#custom-updater {
+  border-radius: 20px 0 0 20px;
+}
+
+#custom-snip {
+  font-size: 20px;
+}
+
+#pulseaudio.muted,
+#network.disconnected {
+  color: #ff6b6b;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+
+#clock {
+  border-radius: 0 20px 20px 0;
+  margin-right: 4px;
+}

@@ -10,13 +10,12 @@
   "modules-center": [
     "custom/media",
     "hyprland/workspaces",
-    "wlr/taskbar"
-  ],
-  "modules-right": [
+    "wlr/taskbar",
     "network",
     "tray",
     "clock"
   ],
+  "modules-right": [],
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
@@ -71,10 +70,10 @@
   },
   "network": {
     "format-wifi": "{essid} ({signalStrength}%) ",
-    "format-ethernet": "Connected ",
+    "format-ethernet": "",
     "tooltip-format": "{ifname} via {gwaddr}",
-    "format-linked": "{ifname} (No IP)",
-    "format-disconnected": "Disconnected ",
+    "format-linked": "",
+    "format-disconnected": "",
     "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
   "tray": {

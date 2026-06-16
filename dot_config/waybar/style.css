@@ -35,10 +35,9 @@ tooltip {
   border-radius: 20px;
 }
 
-/* Group: Status & Clock */
-#network { border-radius: 20px 0 0 20px; margin-right: 0; }
-#tray { border-radius: 0; margin-left: 0; margin-right: 0; }
-#clock { border-radius: 0 20px 20px 0; margin-left: 0; margin-right: 4px; color: #89b4fa; }
+#clock {
+  color: #89b4fa;
+}
 
 #workspaces {
   background: rgba(30, 30, 46, 0.85);

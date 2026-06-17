@@ -1,11 +1,19 @@
+local ok, colors = pcall(dofile, os.getenv("HOME") .. "/.config/themes/current/colors.lua")
+if not ok or not colors then
+    colors = {
+        primary = "rgba(89b4faee)",
+        border_inactive = "rgba(313244aa)",
+    }
+end
+
 hl.config({
     general = {
         gaps_in = 6,
         gaps_out = 12,
         border_size = 2,
         col = {
-            active_border = { colors = { "rgba(89b4faee)", "rgba(cba6f7ee)" }, angle = 45 },
-            inactive_border = "rgba(313244aa)",
+            active_border = colors.primary,
+            inactive_border = colors.border_inactive,
         },
         layout = "dwindle",
         resize_on_border = true,

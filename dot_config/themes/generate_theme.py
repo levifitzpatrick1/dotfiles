@@ -133,6 +133,20 @@ $font_family_bold = Inter Bold
     with open(os.path.join(target_dir, "colors.rasi"), "w") as f:
         f.write(colors_rasi)
 
+    # 8. Write colors.lua (Hyprland Lua format)
+    colors_lua = f"""return {{
+    primary = "rgba({hex_primary.lstrip('#')}ff)",
+    background = "rgba({hex_bg.lstrip('#')}b8)",
+    surface = "rgba({hex_bg_soft.lstrip('#')}ad)",
+    text = "rgba({hex_text.lstrip('#')}ff)",
+    subtext = "rgba({hex_subtext.lstrip('#')}ff)",
+    border = "rgba({hex_primary.lstrip('#')}47)",
+    border_inactive = "rgba({hex_bg_soft.lstrip('#')}aa)",
+}}
+"""
+    with open(os.path.join(target_dir, "colors.lua"), "w") as f:
+        f.write(colors_lua)
+
     print("Theme generated successfully!")
 
 if __name__ == "__main__":

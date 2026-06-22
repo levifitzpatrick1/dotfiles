@@ -1,7 +1,7 @@
 hl.on("hyprland.start", function()
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
     hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_SESSION_DESKTOP HYPRLAND_INSTANCE_SIGNATURE XDG_RUNTIME_DIR")
-    hl.exec_cmd("/usr/lib/xdg-desktop-portal-hyprland")
+    hl.exec_cmd("systemctl --user start hyprland-session.target xdg-desktop-portal")
 
     hl.exec_cmd([[sh -c 'until tailscale ip -4 >/dev/null 2>&1; do sleep 1; done; wayvnc "$(tailscale ip -4)" 5900']])
 

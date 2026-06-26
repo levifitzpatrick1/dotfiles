@@ -56,18 +56,18 @@ hl.bind("F24", hl.dsp.send_key_state({ key = "F24", state = "down", window = "cl
 hl.bind("F24", hl.dsp.send_key_state({ key = "F24", state = "up", window = "class:^discord$", mods = "" }),
     { release = true })
 
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"),
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/quickshell-osd/scripts/volume_adjust up"),
     { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/quickshell-osd/scripts/volume_adjust down"),
     { locked = true, repeating = true })
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/quickshell-osd/scripts/volume_adjust mute"),
     { locked = true, repeating = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 5%+"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/quickshell-osd/scripts/brightness_adjust up"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/quickshell-osd/scripts/brightness_adjust down"), { locked = true, repeating = true })
 
 -- Passthrough / Game Mode submap
 hl.define_submap("passthru", function()

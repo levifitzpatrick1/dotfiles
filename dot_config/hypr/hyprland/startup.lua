@@ -14,6 +14,7 @@ hl.on("hyprland.start", function()
 
     -- Brain Shell & services (keeping the custom wallpaper engine instead of awww)
     hl.exec_cmd("quickshell -c " .. os.getenv("HOME") .. "/.local/src/Brain_Shell")
+    hl.exec_cmd("quickshell -c " .. os.getenv("HOME") .. "/.config/quickshell-osd")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
     hl.exec_cmd("wl-paste --type image --watch cliphist store")

@@ -1,0 +1,29 @@
+#!/bin/bash
+# ─────────────────────────────────────────────────────────────────────────────
+#  Quickshell OSD — Brightness Adjuster Helper
+#  Usage: executable_brightness_adjust [up|down]
+# ─────────────────────────────────────────────────────────────────────────────
+set -eo pipefail
+
+case "${1:-}" in
+    up)
+        brightnessctl set 5%+ >/dev/null
+        ;;
+    down)
+        brightnessctl set 5%- >/dev/null
+        ;;
+    *)
+        echo "Usage: $0 [up|down]"
+        exit 1
+        ;;
+esac
+
+# Retrieve current and maximum brightness from brightnessctl
+cur=$(brightnessctl g)
+max=$(brightnessctl m)
+
+# Calculate percentage
+pct=$(( cur * 100 / max ))
+
+# Send the update to Quickshell OSD via IPC
+qs ipc -c "$HOME/.config/quickshell-osd" call osd-brightness show "$pct" || true

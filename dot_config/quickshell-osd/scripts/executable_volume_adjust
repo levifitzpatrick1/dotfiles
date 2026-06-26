@@ -1,0 +1,37 @@
+#!/bin/bash
+# ─────────────────────────────────────────────────────────────────────────────
+#  Quickshell OSD — Volume Adjuster Helper
+#  Usage: executable_volume_adjust [up|down|mute]
+# ─────────────────────────────────────────────────────────────────────────────
+set -eo pipefail
+
+case "${1:-}" in
+    up)
+        wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
+        ;;
+    down)
+        wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+        ;;
+    mute)
+        wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+        ;;
+    *)
+        echo "Usage: $0 [up|down|mute]"
+        exit 1
+        ;;
+esac
+
+# Retrieve current volume state from PipeWire
+val=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+
+# Parse volume level (e.g. 0.65 -> 65)
+vol=$(echo "$val" | awk '{print int($2 * 100 + 0.5)}')
+
+# Parse mute state
+muted="false"
+if echo "$val" | grep -q "MUTED"; then
+    muted="true"
+fi
+
+# Send the update to Quickshell OSD via IPC
+qs ipc -c "$HOME/.config/quickshell-osd" call osd-volume show "$vol" "$muted" || true

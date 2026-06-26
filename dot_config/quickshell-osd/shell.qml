@@ -58,16 +58,17 @@ ShellRoot {
     // ── IPC Handlers ───────────────────────────────────────────────────────────
     IpcHandler {
         target: "osd-volume"
-        // Quickshell IPC calls are function calls
-        function show(vol, muted) {
-            root.showOsd("volume", parseInt(vol), muted === "true" || muted === true)
+        // Explicitly typed arguments and return type for IPC compatibility
+        function show(vol: int, muted: bool): void {
+            root.showOsd("volume", vol, muted)
         }
     }
 
     IpcHandler {
         target: "osd-brightness"
-        function show(pct) {
-            root.showOsd("brightness", parseInt(pct), false)
+        // Explicitly typed arguments and return type for IPC compatibility
+        function show(pct: int): void {
+            root.showOsd("brightness", pct, false)
         }
     }
 

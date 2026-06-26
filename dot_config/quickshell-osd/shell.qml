@@ -79,11 +79,13 @@ ShellRoot {
         width: 320
         height: 70
         
-        // Center horizontally and place 100px above the bottom of the screen
-        x: screen.x + (screen.width - width) / 2
-        y: screen.y + screen.height - height - (root.osdActive ? 120 : 100)
+        // Position at bottom center using layer-shell anchors and margins
+        anchors {
+            bottom: true
+        }
+        margins.bottom: root.osdActive ? 120 : 100
 
-        Behavior on y {
+        Behavior on margins.bottom {
             NumberAnimation { duration: 250; easing.type: Easing.OutCubic }
         }
 

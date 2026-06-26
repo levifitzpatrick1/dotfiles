@@ -94,19 +94,23 @@ ShellRoot {
 
         color: "transparent"
 
-        // Smooth fade transition
-        opacity: root.osdActive ? 1.0 : 0.0
-        Behavior on opacity {
-            NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
-        }
+        // Make window visible only when active or animating
+        visible: root.osdActive || container.opacity > 0.0
 
         // Pill-shaped container
         Rectangle {
+            id: container
             anchors.fill: parent
             radius: 24
             color: Qt.rgba(root.colorBackground.r, root.colorBackground.g, root.colorBackground.b, 0.8)
             border.width: 1
             border.color: root.colorBorder
+
+            // Smooth fade transition on the visual container
+            opacity: root.osdActive ? 1.0 : 0.0
+            Behavior on opacity {
+                NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
+            }
 
             Row {
                 anchors.fill: parent

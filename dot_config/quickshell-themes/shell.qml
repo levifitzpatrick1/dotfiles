@@ -163,7 +163,7 @@ ShellRoot {
                         color: Qt.rgba(root.colorBackground.r, root.colorBackground.g, root.colorBackground.b, 0.5)
                         border.width: 1
                         border.color: searchInput.activeFocus ? root.colorActive : root.colorBorder
-                        border.radius: 16
+                        radius: 16
                         anchors.horizontalCenter: parent.horizontalCenter
 
                         Behavior on border.color { ColorAnimation { duration: 150 } }

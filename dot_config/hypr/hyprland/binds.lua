@@ -5,13 +5,15 @@ local screenshot_region = [[grim -g "$(slurp)" - | satty --filename -]]
 
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("ghostty"))
 hl.bind(mainMod .. " + Space",
-    hl.dsp.exec_cmd([["$HOME/.config/rofi/launch" -show combi -modes combi -combi-modi "drun,calc" -theme "$HOME/.config/rofi/launcher.rasi"]]))
+    hl.dsp.exec_cmd("qs ipc -c " .. os.getenv("HOME") .. "/.local/src/Brain_Shell call dashboard-launcher toggle"))
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd([["$HOME/.config/rofi/games"]]))
-hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("swaync-client -t -sw"))
+hl.bind(mainMod .. " + Escape",
+    hl.dsp.exec_cmd("qs ipc -c " .. os.getenv("HOME") .. "/.local/src/Brain_Shell call notification-toggle toggle"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd([[xdg-open "$HOME"]]))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("xdg-open https://duckduckgo.com/"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
-hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("pidof wlogout && killall wlogout || wlogout -b 4 -T 610 -B 610 -L 1030 -R 1030"))
+hl.bind(mainMod .. " + X",
+    hl.dsp.exec_cmd("qs ipc -c " .. os.getenv("HOME") .. "/.local/src/Brain_Shell call PowerMenu-toggle toggle"))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("$HOME/.config/themes/select_theme"))
 
 hl.bind("Print", hl.dsp.exec_cmd(screenshot_full))

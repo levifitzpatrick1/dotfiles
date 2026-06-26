@@ -7,8 +7,17 @@ hl.on("hyprland.start", function()
 
     hl.exec_cmd("hyprlock")
     hl.exec_cmd("sh -c 'sleep 4; systemctl --user restart app-dev.lizardbyte.app.Sunshine.service'")
-    hl.exec_cmd("sh -c 'sleep 1; swaync'")
-    hl.exec_cmd("sh -c 'sleep 2; ~/.config/waybar/launch'")
+    
+    -- Disabled in favor of Brain Shell
+    -- hl.exec_cmd("sh -c 'sleep 1; swaync'")
+    -- hl.exec_cmd("sh -c 'sleep 2; ~/.config/waybar/launch'")
+
+    -- Brain Shell & services (keeping the custom wallpaper engine instead of awww)
+    hl.exec_cmd("quickshell -c " .. os.getenv("HOME") .. "/.local/src/Brain_Shell")
+    hl.exec_cmd("systemctl --user start hyprpolkitagent")
+    hl.exec_cmd("wl-paste --type text --watch cliphist store")
+    hl.exec_cmd("wl-paste --type image --watch cliphist store")
+
     hl.exec_cmd("sh -c 'sleep 1; ~/.config/themes/restore_wallpaper'")
     hl.exec_cmd("sh -c 'sleep 1; hypridle'")
 end)

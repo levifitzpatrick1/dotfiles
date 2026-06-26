@@ -57,6 +57,9 @@ if [ -d "$source_path" ] && [ -f "$source_path/project.json" ]; then
   fi
 
   "$HOME/.config/themes/generate_theme" "$theme_source"
+  if command -v matugen >/dev/null 2>&1; then
+    matugen image "$theme_source" -c "$HOME/.local/src/Brain_Shell/src/config/matugen.toml" --source-color-index 0 --type scheme-content || true
+  fi
   printf 'animated\t%s\n' "$source_path" > "$state_file"
   pkill -x hyprpaper 2>/dev/null || true
   pkill -x swww-daemon 2>/dev/null || true
@@ -75,6 +78,9 @@ else
     exit 1
   fi
   "$HOME/.config/themes/generate_theme" "$source_path"
+  if command -v matugen >/dev/null 2>&1; then
+    matugen image "$source_path" -c "$HOME/.local/src/Brain_Shell/src/config/matugen.toml" --source-color-index 0 --type scheme-content || true
+  fi
   printf 'static\t%s\n' "$source_path" > "$state_file"
   stop_animated_wallpaper
 

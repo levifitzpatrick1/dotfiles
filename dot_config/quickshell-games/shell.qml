@@ -41,7 +41,7 @@ ShellRoot {
     // ── Data Fetching Process ──────────────────────────────────────────────────
     Process {
         id: fetchProcess
-        command: [Quickshell.env("HOME") + "/.config/rofi/games", "--list"]
+        command: [Quickshell.env("HOME") + "/.config/quickshell-games/games", "--list"]
         running: true
         stdout: SplitParser {
             onRead: function(line) {

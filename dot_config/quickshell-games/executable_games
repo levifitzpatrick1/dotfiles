@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-source_file="$HOME/.config/rofi/games.go"
+source_file="$HOME/.config/quickshell-games/games.go"
 cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/dotfiles-tools"
 binary="$cache_dir/game-launcher"
 

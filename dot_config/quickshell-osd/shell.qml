@@ -119,7 +119,6 @@ ShellRoot {
                 anchors.leftMargin: 20
                 anchors.rightMargin: 20
                 spacing: 12
-                verticalAlignment: Text.AlignVCenter
 
                 // Icon (Nerd Font symbol)
                 Text {
@@ -137,7 +136,7 @@ ShellRoot {
                     }
                     font.pixelSize: 20
                     color: root.colorActive
-                    verticalAlignment: Text.AlignVCenter
+                    anchors.verticalCenter: parent.verticalCenter
                     width: 24
                 }
 
@@ -174,7 +173,6 @@ ShellRoot {
                     font.pixelSize: 12
                     font.bold: true
                     color: root.colorText
-                    verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignRight
                     anchors.verticalCenter: parent.verticalCenter
                     width: 50

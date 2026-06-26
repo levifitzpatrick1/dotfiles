@@ -59,7 +59,7 @@ ShellRoot {
     IpcHandler {
         target: "osd-volume"
         // Explicitly typed arguments and return type for IPC compatibility
-        function show(vol: int, muted: bool): void {
+        function update(vol: int, muted: bool): void {
             root.showOsd("volume", vol, muted)
         }
     }
@@ -67,7 +67,7 @@ ShellRoot {
     IpcHandler {
         target: "osd-brightness"
         // Explicitly typed arguments and return type for IPC compatibility
-        function show(pct: int): void {
+        function update(pct: int): void {
             root.showOsd("brightness", pct, false)
         }
     }

@@ -2,6 +2,8 @@ local ok, colors = pcall(dofile, os.getenv("HOME") .. "/.config/themes/current/c
 if not ok or not colors then
     colors = {
         primary = "rgba(89b4faee)",
+        secondary = "rgba(94e2d5ee)",
+        glow = "rgba(89b4fa38)",
         border_inactive = "rgba(313244aa)",
     }
 end
@@ -32,10 +34,7 @@ hl.config({
             noise = 0.02,
         },
         shadow = {
-            enabled = true,
-            range = 15,
-            render_power = 3,
-            color = "rgba(1a1a1aee)",
+            enabled = false,
         },
     },
 

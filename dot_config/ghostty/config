@@ -1,12 +1,22 @@
-background = #000000
-background-opacity = 0.5
-background-blur = 20
+config-file = ?../themes/current/ghostty.conf
 
-window-padding-x = 8
-window-padding-y = 8
+background-opacity = 0.82
+background-blur = 24
+minimum-contrast = 1.15
+
+window-padding-x = 14
+window-padding-y = 12
+window-padding-balance = true
+window-padding-color = background
+window-decoration = false
 confirm-close-surface = false
 
 shell-integration = zsh
 
-font-family = "Hack Nerd Font"
-font-size = 25
+font-family = "Hack Nerd Font Mono"
+font-size = 15
+adjust-cell-height = 8%
+
+cursor-style = bar
+cursor-style-blink = false
+selection-clear-on-typing = true

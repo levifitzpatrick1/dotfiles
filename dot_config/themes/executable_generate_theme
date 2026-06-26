@@ -1,9 +1,9 @@
 #!/bin/sh
 set -eu
 
-source_file="$HOME/.config/themes/select_theme.go"
+source_file="$HOME/.config/themes/generate_theme.go"
 cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/dotfiles-tools"
-binary="$cache_dir/theme-selector"
+binary="$cache_dir/theme-generator"
 
 mkdir -p "$cache_dir"
 if [ ! -x "$binary" ] || [ "$source_file" -nt "$binary" ]; then

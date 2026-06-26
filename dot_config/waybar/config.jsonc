@@ -1,14 +1,15 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 32,
-  "spacing": 4,
-  "margin-top": 4,
+  "height": 36,
+  "spacing": 3,
+  "margin-top": 6,
   "margin-left": 8,
   "margin-right": 8,
   "modules-left": [],
   "modules-center": [
     "hyprland/submap",
+    "custom/game-launcher",
     "custom/media",
     "hyprland/workspaces",
     "network",
@@ -32,47 +33,6 @@
       "*": 5
     }
   },
-  "wlr/taskbar": {
-    "format": "{icon}",
-    "icon-size": 20,
-    "tooltip-format": "{title}",
-    "on-click": "activate",
-    "on-click-middle": "close",
-    "on-click-right": "minimize"
-  },
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": ""
-    }
-  },
-  "pulseaudio": {
-    "format": "{volume}% {icon}",
-    "format-muted": "muted ",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": [
-        "",
-        "",
-        ""
-      ]
-    },
-    "on-click": "pavucontrol",
-    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-  },
-  "cpu": {
-    "format": "{usage}% ",
-    "tooltip": false
-  },
-  "memory": {
-    "format": "{}% "
-  },
   "network": {
     "format-wifi": "{essid} ({signalStrength}%) ",
     "format-ethernet": "",
@@ -90,10 +50,10 @@
     "format-alt": "{:%Y-%m-%d}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
-  "custom/launcher": {
+  "custom/game-launcher": {
     "format": "",
-    "on-click": "$HOME/.config/rofi/launch -show drun -theme \"$HOME/.config/rofi/launcher.rasi\"",
-    "on-click-right": "killall rofi"
+    "tooltip-format": "Games",
+    "on-click": "$HOME/.config/rofi/games"
   },
   "custom/media": {
     "format": " {}",
@@ -103,21 +63,5 @@
     "max-length": 24,
     "on-click": "playerctl play-pause",
     "on-click-right": "playerctl next"
-  },
-  "custom/power": {
-    "format": "",
-    "on-click": "hyprlock",
-    "on-click-right": "hyprctl dispatch exit"
-  },
-  "custom/updater": {
-    "format": " {} Updates",
-    "exec": "checkupdates | wc -l",
-    "exec-if": "sh -c 'test -n \"$(checkupdates)\"'",
-    "interval": 900,
-    "on-click": "ghostty -e yay -Syu"
-  },
-  "custom/snip": {
-    "format": "",
-    "on-click": "sh -c 'mkdir -p \"$HOME/Pictures/Screenshots\"; grim -g \"$(slurp)\" \"$HOME/Pictures/Screenshots/$(date +%F-%H%M%S).png\"'"
   }
 }

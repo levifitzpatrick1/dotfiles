@@ -6,11 +6,12 @@ local screenshot_region = [[grim -g "$(slurp)" - | satty --filename -]]
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("ghostty"))
 hl.bind(mainMod .. " + Space",
     hl.dsp.exec_cmd([["$HOME/.config/rofi/launch" -show combi -modes combi -combi-modi "drun,calc" -theme "$HOME/.config/rofi/launcher.rasi"]]))
+hl.bind(mainMod .. " + G", hl.dsp.exec_cmd([["$HOME/.config/rofi/games"]]))
 hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("swaync-client -t -sw"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd([[xdg-open "$HOME"]]))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("xdg-open https://duckduckgo.com/"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
-hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("pidof wlogout && killall wlogout || wlogout -b 3 -T 620 -B 620 -L 1150 -R 1150"))
+hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("pidof wlogout && killall wlogout || wlogout -b 4 -T 610 -B 610 -L 1030 -R 1030"))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("$HOME/.config/themes/select_theme"))
 
 hl.bind("Print", hl.dsp.exec_cmd(screenshot_full))
@@ -23,7 +24,7 @@ hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 
-hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("spotify"))
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd([[pgrep -x spotify >/dev/null || (spotify &); hyprctl dispatch 'hl.dsp.workspace.toggle_special("spotify")']]))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:spotify" }))
 
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
@@ -76,4 +77,3 @@ end)
 -- Bind to enter passthru mode
 hl.bind(mainMod .. " + F12", hl.dsp.submap("passthru"))
 hl.bind(mainMod .. " + F12", hl.dsp.exec_cmd("notify-send -t 2000 -u critical 'Game Mode Enabled' 'All global shortcuts disabled. Press ALT+Escape or ALT+F12 to exit.'"))
-

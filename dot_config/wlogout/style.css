@@ -1,35 +1,41 @@
 @import url("/home/levi/.config/themes/current/colors.css");
 
 * {
-  font-family: "Inter", sans-serif;
+  font-family: "Comfortaa", "Hack Nerd Font", sans-serif;
   font-size: 14px;
   font-weight: 600;
 }
 
 window {
-  background-color: @background; /* Dynamic blurred background overlay */
+  background-color: transparent;
 }
 
 button {
-  color: transparent; /* Keep text transparent */
-  background-color: @surface; /* Dynamic theme surface color */
+  color: transparent;
+  background-color: @surface;
   outline-style: none;
-  border: 2px solid @border; /* Dynamic theme border color */
-  border-radius: 9999px; /* Perfect pill shape */
-  margin: 15px 20px;
-  padding: 10px;
+  border: 2px solid @border;
+  border-radius: 32px; /* uniform, extremely round! */
+  margin: 16px;
+  padding: 28px 18px;
   background-repeat: no-repeat;
-  background-position: center; /* Center the white icon */
-  background-size: 32%;
-  transition: all 0.2s ease-in-out;
+  background-position: center;
+  background-size: 34%;
+  box-shadow: none; /* flat style */
+  transition: all 0.2s ease-out;
 }
 
 button:focus,
 button:hover {
-  background-color: rgba(255, 255, 255, 0.18);
-  border-color: @primary; /* Highlight border using primary accent color */
-  color: transparent; /* Keep text hidden */
-  background-position: center; /* Keep icon perfectly centered */
+  background-color: @surface_high;
+  border-color: @primary;
+  color: transparent;
+  background-position: center;
+  box-shadow: none;
+}
+
+#lock {
+  background-image: url("/home/levi/.config/wlogout/icons/lock.svg");
 }
 
 #logout {

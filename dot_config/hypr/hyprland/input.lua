@@ -8,15 +8,20 @@ hl.config({
 
         follow_mouse = 1,
         sensitivity = -0.6,
+        accel_profile = "flat",
 
         touchpad = {
             natural_scroll = false,
         },
     },
+
+    cursor = {
+        enable_hyprcursor = false,
+    },
 })
 
 hl.device({
     name = "logitech-gaming-mouse-g600",
-    sensitivity = -0.5,
+    sensitivity = -0.25,
     accel_profile = "flat",
 })

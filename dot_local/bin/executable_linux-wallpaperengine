@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+
+runtime="$HOME/.local/lib/linux-wallpaperengine"
+export LD_LIBRARY_PATH="$runtime:$runtime/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+cd "$runtime"
+exec "$runtime/linux-wallpaperengine" "$@"

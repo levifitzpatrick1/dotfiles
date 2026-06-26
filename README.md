@@ -27,6 +27,7 @@ Short caveman list. What thing do.
 - **hyprctl** - talk to Hyprland from terminal.
 - **Ghostty** - terminal. `Alt+Return`.
 - **Rofi** - app launcher. `Alt+Space`.
+- **Game launcher** - Steam library plus Steam non-Steam shortcuts. `Alt+G`.
 - **Waybar** - top/status bar.
 - **SwayNC** - notifications. `Alt+Escape`.
 - **Wlogout** - power/logout menu. `Alt+X`.
@@ -41,4 +42,3 @@ Short caveman list. What thing do.
 - **Sunshine** - game/desktop streaming.
 
 More detail is in `docs/apps.md`.
-

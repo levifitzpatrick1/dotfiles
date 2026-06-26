@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eu
+
+state_file="$HOME/.config/themes/current/wallpaper.source"
+if [ -f "$state_file" ]; then
+  IFS="$(printf '\t')" read -r kind source < "$state_file"
+  if [ -n "${source:-}" ] && [ -e "$source" ]; then
+    exec "$HOME/.config/themes/set_wallpaper" "$source"
+  fi
+fi
+
+if [ -f "$HOME/.config/themes/current/background.jpg" ]; then
+  exec "$HOME/.config/themes/set_wallpaper" "$HOME/.config/themes/current/background.jpg"
+fi

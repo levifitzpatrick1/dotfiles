@@ -3,99 +3,130 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: "Iosevka Nerd Font", "Roboto", "Helvetica", "Arial", sans-serif;
-  font-size: 15px;
+  font-family: "Comfortaa", "Hack Nerd Font", sans-serif;
+  font-size: 12px;
   font-weight: 600;
   min-height: 0;
 }
 
 window#waybar {
-  background-color: transparent;
+  background: transparent;
   color: @text;
 }
 
 window#waybar.hidden {
-  opacity: 0.2;
+  opacity: 0.25;
 }
 
 tooltip {
-  background: @surface;
+  background: @surface_high;
   color: @text;
   border: 1px solid @border;
-  border-radius: 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px @glow;
 }
 
-#clock,
-#network,
-#custom-media,
-#taskbar,
-#tray {
+/* Unified Center Capsule */
+.modules-center {
   background: @background;
+  border: 1px solid @border;
+  border-radius: 20px; /* extremely round! */
+  padding: 2px 8px;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+
+#submap,
+#custom-game-launcher,
+#custom-media,
+#network,
+#tray,
+#clock,
+#workspaces {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  box-shadow: none;
   color: @text;
   padding: 0 10px;
-  margin: 2px 2px;
-  border-radius: 20px;
-}
-
-#clock {
-  color: @text;
-}
-
-#workspaces {
-  background: @background;
-  border-radius: 20px;
-  margin: 2px 2px;
-  padding: 0 4px;
-}
-
-#workspaces button {
-  color: @subtext;
-  border-radius: 16px;
-  padding: 0 6px;
-  margin: 2px;
   transition: all 0.2s ease;
-  box-shadow: none;
-  text-shadow: none;
 }
 
-#workspaces button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: @text;
+#custom-game-launcher,
+#custom-media,
+#network,
+#tray,
+#clock,
+#submap {
+  padding: 0 12px;
 }
 
-#workspaces button.active,
-#workspaces button.focused {
-  background: @primary;
-  color: @background;
+#custom-game-launcher {
+  color: @primary;
+  font-size: 15px;
 }
 
-#workspaces button.urgent {
-  background: #f38ba8;
-  color: @background;
-}
-
-#taskbar {
-  padding: 0 8px;
-}
-
-#taskbar button {
-  padding: 0 6px;
-  border-radius: 16px;
-  margin: 2px;
-  background: transparent;
-}
-
-#taskbar button:hover {
-  background: rgba(255, 255, 255, 0.1);
+#custom-game-launcher:hover,
+#custom-media:hover,
+#network:hover,
+#clock:hover {
+  background: @primary_soft;
+  border-radius: 12px;
+  color: @primary;
 }
 
 #custom-media {
   color: @text;
 }
 
-#pulseaudio.muted,
 #network.disconnected {
   color: @subtext;
+}
+
+#workspaces {
+  padding: 0 4px;
+}
+
+#workspaces button {
+  color: @subtext;
+  border: none;
+  border-radius: 12px; /* very round! */
+  padding: 0 8px;
+  margin: 3px 2px;
+  background: transparent;
+  box-shadow: none;
+  text-shadow: none;
+  transition: all 0.2s ease-out;
+}
+
+#workspaces button:hover {
+  background: @primary_soft;
+  color: @text;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+  background: @primary_soft;
+  color: @primary;
+}
+
+#workspaces button.urgent {
+  background: @critical;
+  color: @background;
+}
+
+#tray {
+  padding: 0 10px;
+}
+
+#clock {
+  color: @primary;
+  font-weight: 700;
+}
+
+#network {
+  color: @secondary;
 }
 
 #tray > .passive {
@@ -107,9 +138,8 @@ tooltip {
 }
 
 #submap {
-  background: #f38ba8;
-  color: #ffffff;
-  padding: 0 10px;
-  margin: 2px 2px;
-  border-radius: 20px;
+  background: @critical;
+  color: @background;
+  border-radius: 12px;
+  margin: 3px 2px;
 }

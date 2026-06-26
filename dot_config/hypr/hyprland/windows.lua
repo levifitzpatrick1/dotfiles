@@ -44,5 +44,12 @@ hl.layer_rule({
     name = "shell-blur",
     match = { namespace = "^(waybar|swaync-control-center|swaync-notification-window|wlogout)$" },
     blur = true,
-    ignore_alpha = 0,
+    ignore_alpha = 0.5,
+})
+
+hl.layer_rule({
+    name = "rofi-blur",
+    match = { namespace = "^(rofi)$" },
+    blur = true,
+    ignore_alpha = 0.5,
 })

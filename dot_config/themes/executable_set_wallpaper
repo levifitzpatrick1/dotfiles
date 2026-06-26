@@ -2,34 +2,98 @@
 set -eu
 
 if [ -z "${1:-}" ]; then
-  echo "Usage: set_wallpaper <path/to/wallpaper.jpg>"
+  echo "Usage: set_wallpaper <image-or-workshop-directory>"
   exit 1
 fi
 
-wallpaper_path="$1"
+source_path=$(realpath "$1")
+current_dir="$HOME/.config/themes/current"
+state_file="$current_dir/wallpaper.source"
+wallpaper_engine="$HOME/.local/bin/linux-wallpaperengine"
+mkdir -p "$current_dir"
 
-# Generate theme from the image
-python3 "$HOME/.config/themes/generate_theme.py" "$wallpaper_path"
+stop_animated_wallpaper() {
+  systemctl --user stop animated-wallpaper.service 2>/dev/null || true
+  pkill -x linux-wallpaperengine 2>/dev/null || true
+}
 
-# Reload wallpaper in swww or hyprpaper
-if command -v swww >/dev/null 2>&1; then
-  if ! pgrep -x swww-daemon >/dev/null; then
-    swww-daemon --format xrgb &
-    sleep 0.5
+reload_desktop_theme() {
+  hyprctl reload >/dev/null 2>&1 || true
+  killall -USR2 waybar 2>/dev/null || true
+  if pgrep -x swaync >/dev/null; then
+    swaync-client -R || true
   fi
-  swww img "$HOME/.config/themes/current/background.jpg" --transition-type outer --transition-fps 60 --transition-step 10 || true
-elif pgrep -x hyprpaper >/dev/null; then
-  hyprctl hyprpaper unload all || true
-  hyprctl hyprpaper preload "$HOME/.config/themes/current/background.jpg" || true
-  hyprctl hyprpaper wallpaper "DP-2,$HOME/.config/themes/current/background.jpg" || true
+}
+
+if [ -d "$source_path" ] && [ -f "$source_path/project.json" ]; then
+  preview=""
+  for candidate in preview.jpg preview.jpeg preview.png preview.gif; do
+    if [ -f "$source_path/$candidate" ]; then
+      preview="$source_path/$candidate"
+      break
+    fi
+  done
+  if [ -z "$preview" ]; then
+    preview=$(find "$source_path" -maxdepth 1 -type f \( -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' -o -name '*.gif' \) | head -n 1)
+  fi
+  if [ -z "$preview" ]; then
+    notify-send "Animated Wallpaper" "No preview image found in $source_path"
+    exit 1
+  fi
+  if [ ! -x "$wallpaper_engine" ]; then
+    notify-send "Animated Wallpaper" "Linux Wallpaper Engine is not installed"
+    exit 1
+  fi
+
+  theme_source="$preview"
+  project_file=$(jq -r '.file // empty' "$source_path/project.json" 2>/dev/null || true)
+  if [ -n "$project_file" ] && [ -f "$source_path/$project_file" ] && command -v ffmpeg >/dev/null 2>&1; then
+    lock_frame=$(mktemp --suffix=.jpg)
+    trap 'rm -f "$lock_frame"' EXIT
+    if ffmpeg -loglevel error -y -ss 2 -i "$source_path/$project_file" \
+      -frames:v 1 -vf 'scale=2560:-2:force_original_aspect_ratio=decrease' "$lock_frame"; then
+      theme_source="$lock_frame"
+    fi
+  fi
+
+  "$HOME/.config/themes/generate_theme" "$theme_source"
+  printf 'animated\t%s\n' "$source_path" > "$state_file"
+  pkill -x hyprpaper 2>/dev/null || true
+  pkill -x swww-daemon 2>/dev/null || true
+  stop_animated_wallpaper
+  engine_args=(--silent --fps 30 --disable-mouse)
+  while IFS= read -r monitor; do
+    [ -n "$monitor" ] || continue
+    engine_args+=(--screen-root "$monitor" --bg "$source_path" --scaling fill)
+  done < <(hyprctl monitors -j | jq -r '.[].name')
+  systemd-run --user --quiet --collect --unit=animated-wallpaper \
+    --property=Restart=on-failure --property=RestartSec=2 \
+    "$wallpaper_engine" "${engine_args[@]}"
+else
+  if [ ! -f "$source_path" ]; then
+    notify-send "Wallpaper" "File not found: $source_path"
+    exit 1
+  fi
+  "$HOME/.config/themes/generate_theme" "$source_path"
+  printf 'static\t%s\n' "$source_path" > "$state_file"
+  stop_animated_wallpaper
+
+  if command -v swww >/dev/null 2>&1; then
+    if ! pgrep -x swww-daemon >/dev/null; then
+      swww-daemon --format xrgb &
+      sleep 0.5
+    fi
+    swww img "$current_dir/background.jpg" --transition-type outer --transition-fps 60 --transition-step 10
+  elif command -v hyprpaper >/dev/null 2>&1; then
+    if ! pgrep -x hyprpaper >/dev/null; then
+      hyprpaper &
+      sleep 1
+    fi
+    hyprctl hyprpaper unload all || true
+    hyprctl hyprpaper preload "$current_dir/background.jpg" || true
+    hyprctl hyprpaper wallpaper "DP-2,$current_dir/background.jpg" || true
+  fi
 fi
 
-# Reload waybar (signals waybar to reload style/css)
-killall -USR2 waybar || true
-
-# Reload swaync client if running
-if pgrep -x swaync >/dev/null; then
-  swaync-client -R || true
-fi
-
+reload_desktop_theme
 echo "Wallpaper and theme applied successfully!"

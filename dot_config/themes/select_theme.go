@@ -171,7 +171,7 @@ func main() {
 	})
 	if len(os.Args) > 1 && os.Args[1] == "--list" {
 		for _, item := range themes {
-			fmt.Printf("%s\t%s\t%s\n", item.label, item.kind, item.source)
+			fmt.Printf("%s\t%s\t%s\t%s\n", item.label, item.kind, item.source, item.icon)
 		}
 		return
 	}

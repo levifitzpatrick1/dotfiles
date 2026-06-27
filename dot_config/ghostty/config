@@ -11,7 +11,8 @@ window-padding-color = background
 window-decoration = false
 confirm-close-surface = false
 
-shell-integration = zsh
+shell-integration = fish
+command = /usr/bin/fish
 
 font-family = "Hack Nerd Font Mono"
 font-size = 15
@@ -20,3 +21,28 @@ adjust-cell-height = 8%
 cursor-style = bar
 cursor-style-blink = false
 selection-clear-on-typing = true
+
+# ==========================================
+# Fun & Cool Ghostty Customizations
+# ==========================================
+
+# 1. Custom Shader Animations (Cursor Trails & Effects)
+# Enable one of these shaders to add beautiful animations to your cursor:
+custom-shader = shaders/cursor_warp.glsl      # (Enabled) Smooth Neovide-style cursor trail
+# custom-shader = shaders/cursor_tail.glsl      # Comet-like tail (Kitty terminal style)
+# custom-shader = shaders/ripple_cursor.glsl     # Expanding ripple ring when moving
+# custom-shader = shaders/sonic_boom_cursor.glsl # Expanding pulse circle when moving
+
+# Crucial: Ensures shader animations render continuously and smoothly
+custom-shader-animation = always
+
+# 2. Quake-style Drop-down Terminal (Quick Terminal)
+# Press Ctrl + ` (backtick) to slide the terminal down from the top of the screen:
+# keybind = global:ctrl+grave_accent=toggle_quick_terminal
+# quick-terminal-position = top
+# quick-terminal-animation-duration = 0.15
+
+# 3. Focus-dimming for Splits
+# Dim inactive split panes to help you focus on the active one:
+# unfocused-split-opacity = 0.70
+

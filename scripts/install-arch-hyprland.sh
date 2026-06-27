@@ -9,7 +9,9 @@ fi
 official_packages=(
   base-devel
   brightnessctl
+  cava
   chezmoi
+  cliphist
   fzf
   ghostty
   git
@@ -18,13 +20,17 @@ official_packages=(
   hyprland
   hyprlock
   hyprpaper
+  hyprsunset
   libnotify
+  lm_sensors
+  matugen
   noto-fonts-cjk
   pipewire
   pipewire-alsa
   pipewire-jack
   pipewire-pulse
   playerctl
+  quickshell
   rofi
   rofi-calc
   satty
@@ -34,12 +40,16 @@ official_packages=(
   swaync
   tailscale
   ttf-hack-nerd
+  ttf-jetbrains-mono-nerd
   ttf-space-mono-nerd
+  upower
   waybar
   wayvnc
+  wf-recorder
   wget
   wireplumber
   wl-clipboard
+  wtype
   xdg-desktop-portal-hyprland
   xdg-utils
   yazi
@@ -47,6 +57,8 @@ official_packages=(
 )
 
 aur_packages=(
+  auto-cpufreq
+  envycontrol
   sunshine-bin
   ttf-comfortaa
   wlogout
@@ -70,6 +82,16 @@ sudo pacman -Syu --needed "${official_packages[@]}"
 install_paru
 paru -S --needed "${aur_packages[@]}"
 
-echo "Installed Hyprland dotfiles packages."
+# Start services
+sudo systemctl enable --now auto-cpufreq
+
+# Set up Brain Shell
+echo "Setting up Brain Shell..."
+if [ ! -d "$HOME/.local/src/Brain_Shell" ]; then
+  git clone https://github.com/Brainitech/Brain_Shell.git "$HOME/.local/src/Brain_Shell"
+fi
+bash "$HOME/.local/src/Brain_Shell/install.sh"
+
+echo "Installed Hyprland dotfiles packages and Brain Shell."
 echo "Next: chezmoi init --source ~/repos/dotfiles && chezmoi apply"
 

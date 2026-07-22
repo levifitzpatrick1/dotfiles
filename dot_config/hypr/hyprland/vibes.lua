@@ -46,6 +46,14 @@ hl.config({
         force_default_wallpaper = 0,
         disable_hyprland_logo = true,
     },
+
+    experimental = {
+        wp_cm_1_2 = true,
+    },
+
+    render = {
+        cm_auto_hdr = 2,
+    },
 })
 
 hl.curve("snappy", { type = "bezier", points = { { 0.2, 1.0 }, { 0.2, 1.0 } } })

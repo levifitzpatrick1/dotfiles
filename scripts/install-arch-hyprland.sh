@@ -24,13 +24,17 @@ official_packages=(
   libnotify
   lm_sensors
   matugen
+  neovim
   noto-fonts-cjk
+  noto-fonts-emoji
   pipewire
   pipewire-alsa
   pipewire-jack
   pipewire-pulse
   playerctl
   quickshell
+  fd
+  ripgrep
   rofi
   rofi-calc
   satty
@@ -39,8 +43,10 @@ official_packages=(
   stow
   swaync
   tailscale
+  ttf-dejavu
   ttf-hack-nerd
   ttf-jetbrains-mono-nerd
+  ttf-liberation
   ttf-space-mono-nerd
   upower
   waybar

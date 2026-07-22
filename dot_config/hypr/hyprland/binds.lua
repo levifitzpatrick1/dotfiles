@@ -9,7 +9,7 @@ hl.bind(mainMod .. " + G",
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd([[xdg-open "$HOME"]]))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("xdg-open https://duckduckgo.com/"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
-hl.bind(mainMod .. " + T",
+hl.bind(mainMod .. " + W",
     hl.dsp.exec_cmd("quickshell -c " .. os.getenv("HOME") .. "/.config/quickshell-themes"))
 
 hl.bind("Print", hl.dsp.exec_cmd(screenshot_full))
@@ -66,12 +66,12 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/
 -- Passthrough / Game Mode submap
 hl.define_submap("passthru", function()
     -- Keybinds to exit passthru mode
-    hl.bind(mainMod .. " + Escape", hl.dsp.submap("reset"))
-    hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("notify-send -t 1500 'Game Mode' 'Disabled. Global shortcuts restored.'"))
-    hl.bind(mainMod .. " + F12", hl.dsp.submap("reset"))
-    hl.bind(mainMod .. " + F12", hl.dsp.exec_cmd("notify-send -t 1500 'Game Mode' 'Disabled. Global shortcuts restored.'"))
+    hl.bind("SUPER + Escape", hl.dsp.submap("reset"))
+    hl.bind("SUPER + Escape", hl.dsp.exec_cmd("notify-send -t 1500 'Game Mode' 'Disabled. Global shortcuts restored.'"))
+    hl.bind("SUPER + F12", hl.dsp.submap("reset"))
+    hl.bind("SUPER + F12", hl.dsp.exec_cmd("notify-send -t 1500 'Game Mode' 'Disabled. Global shortcuts restored.'"))
 end)
 
 -- Bind to enter passthru mode
-hl.bind(mainMod .. " + F12", hl.dsp.submap("passthru"))
-hl.bind(mainMod .. " + F12", hl.dsp.exec_cmd("notify-send -t 2000 -u critical 'Game Mode Enabled' 'All global shortcuts disabled. Press ALT+Escape or ALT+F12 to exit.'"))
+hl.bind("SUPER + F12", hl.dsp.submap("passthru"))
+hl.bind("SUPER + F12", hl.dsp.exec_cmd("notify-send -t 2000 -u critical 'Game Mode Enabled' 'All global shortcuts disabled. Press SUPER+Escape or SUPER+F12 to exit.'"))

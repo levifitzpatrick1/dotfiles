@@ -18,4 +18,6 @@ hl.on("hyprland.start", function()
 
     hl.exec_cmd("sh -c 'sleep 1; ~/.config/themes/restore_wallpaper'")
     hl.exec_cmd("sh -c 'sleep 1; hypridle'")
+    hl.exec_cmd("sh -c 'sleep 2; openrgb -d \"ASUS ROG STRIX B650E-I GAMING WIFI\" -c 000000'")
+    hl.exec_cmd("sh -c 'sleep 3; steam -silent'")
 end)

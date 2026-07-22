@@ -1,13 +1,10 @@
 package main
 
 import (
-	"bufio"
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"html"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -142,7 +139,7 @@ func workshopThemes(home string) []theme {
 		if preview == "" {
 			continue
 		}
-		name := projectTitle(directory, abiToads[id])
+		name := strings.TrimSuffix(projectTitle(directory, abiToads[id]), " by Abi Toads")
 		themes = append(themes, theme{label: "Abi Toads · " + name, icon: preview, source: directory, kind: "Animated"})
 	}
 	for id, name := range abiToads {
@@ -150,7 +147,7 @@ func workshopThemes(home string) []theme {
 			continue
 		}
 		themes = append(themes, theme{
-			label:  "Subscribe · Abi Toads · " + name,
+			label:  "Abi Toads · " + name,
 			icon:   "steam",
 			source: "steam://url/CommunityFilePage/" + id,
 			kind:   "Subscribe",
@@ -169,38 +166,7 @@ func main() {
 		}
 		return strings.ToLower(themes[i].label) < strings.ToLower(themes[j].label)
 	})
-	if len(os.Args) > 1 && os.Args[1] == "--list" {
-		for _, item := range themes {
-			fmt.Printf("%s\t%s\t%s\t%s\n", item.label, item.kind, item.source, item.icon)
-		}
-		return
-	}
-	if len(themes) == 0 {
-		_ = exec.Command("notify-send", "Theme Selector", "No themes found").Start()
-		return
-	}
-	var menu bytes.Buffer
-	writer := bufio.NewWriter(&menu)
 	for _, item := range themes {
-		fmt.Fprintf(writer, "%s%cicon\x1f%s\n", item.label, byte(0), item.icon)
-	}
-	_ = writer.Flush()
-	command := exec.Command("rofi", "-dmenu", "-i", "-show-icons", "-p", "Select Theme", "-theme", filepath.Join(home, ".config/themes/theme_selector.rasi"))
-	command.Stdin = &menu
-	selected, err := command.Output()
-	if err != nil {
-		return
-	}
-	choice := strings.TrimSpace(string(selected))
-	for _, item := range themes {
-		if item.label != choice {
-			continue
-		}
-		if item.kind == "Subscribe" {
-			_ = exec.Command("steam", item.source).Start()
-		} else {
-			_ = exec.Command(filepath.Join(home, ".config/themes/set_wallpaper"), item.source).Start()
-		}
-		return
+		fmt.Printf("%s\t%s\t%s\t%s\n", item.label, item.kind, item.source, item.icon)
 	}
 }

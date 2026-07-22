@@ -62,7 +62,6 @@ elephant-all-bin
 ethtool
 exfatprogs
 fastfetch
-faugus-launcher
 fzf
 gemini-cli
 ghostty
@@ -77,9 +76,7 @@ hyprlock
 hyprpaper
 hyprpicker
 hyprshot
-icedtea-web
 inkscape
-intel-media-driver
 iotas
 iwd
 jdk
@@ -90,15 +87,10 @@ konsole
 lazygit
 libpulse
 libratbag
-libva-intel-driver
-lightdm
-lightdm-gtk-greeter
-lightdm-gtk-greeter-settings
 linux
 linux-firmware
 linux-headers
 nano
-neofetch
 network-manager-applet
 networkmanager
 noto-fonts-cjk
@@ -155,8 +147,6 @@ unzip
 v4l2loopback-dkms
 vesktop-bin
 vim
-vulkan-intel
-vulkan-nouveau
 vulkan-radeon
 wago-app-bin
 walker-bin
@@ -171,8 +161,6 @@ wpa_supplicant
 xdg-desktop-portal-hyprland
 xdg-utils
 xf86-video-amdgpu
-xf86-video-ati
-xf86-video-nouveau
 xorg-server
 xorg-xinit
 xorg-xinput

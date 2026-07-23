@@ -14,13 +14,10 @@ require("ibl").setup({
     filetypes = {
       "help",
       "alpha",
-      "dashboard",
       "NvimTree",
-      "Trouble",
       "lazy",
       "mason",
       "notify",
-      "toggleterm",
     },
   },
 })

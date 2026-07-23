@@ -19,6 +19,25 @@ chezmoi apply
 
 The install script installs `paru` first when it is missing, then installs the packages this config expects.
 
+### Neovim only (other machines, incl. Windows)
+
+If you just want the Neovim config on a machine that isn't running this full
+Hyprland setup:
+
+```sh
+# Linux / macOS
+./scripts/install-neovim.sh
+```
+
+```powershell
+# Windows (PowerShell)
+.\scripts\install-neovim.ps1
+```
+
+Then `chezmoi init`/`chezmoi apply` as above (or copy `dot_config/nvim` to
+your Neovim config directory directly). See `dot_config/nvim/KEYBINDINGS.md`
+for a quick intro and the full keymap list.
+
 ## Hyprland Apps TLDR
 
 Short caveman list. What thing do.

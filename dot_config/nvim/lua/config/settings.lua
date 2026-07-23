@@ -55,14 +55,6 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
   end,
 })
 
--- Set filetype for VB.NET files
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
-  pattern = "*.vb",
-  callback = function()
-    vim.bo.filetype = "vb"
-  end,
-})
-
 -- Enhanced line number highlighting
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",

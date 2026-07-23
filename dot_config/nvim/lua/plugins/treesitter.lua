@@ -1,61 +1,19 @@
--- Treesitter configuration
+-- Treesitter configuration (nvim-treesitter's new install/highlight API)
 
-require("nvim-treesitter.configs").setup({
-  -- A list of parser names, or "all"
-  ensure_installed = { "lua", "vim", "vimdoc", "javascript", "typescript", "python", "java", "c_sharp" },
+-- Parsers to have on hand right away. For anything else, run `:TSInstall <lang>`.
+local ensure_installed = { "lua", "vim", "vimdoc", "bash", "markdown", "markdown_inline" }
 
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
+require("nvim-treesitter").install(ensure_installed)
 
-  -- Automatically install missing parsers when entering buffer
-  auto_install = true,
-
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-    disable = function(lang, buf)
-      -- Disable treesitter for VB files - we use LSP semantic tokens instead
-      return lang == "vb"
-    end,
-  },
-
-  indent = {
-    enable = true,
-  },
-
-  -- Textobjects for better code navigation
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-        ["aa"] = "@parameter.outer",
-        ["ia"] = "@parameter.inner",
-      },
-    },
-    move = {
-      enable = true,
-      set_jumps = true,
-      goto_next_start = {
-        ["]m"] = "@function.outer",
-        ["]]"] = "@class.outer",
-      },
-      goto_next_end = {
-        ["]M"] = "@function.outer",
-        ["]["] = "@class.outer",
-      },
-      goto_previous_start = {
-        ["[m"] = "@function.outer",
-        ["[["] = "@class.outer",
-      },
-      goto_previous_end = {
-        ["[M"] = "@function.outer",
-        ["[]"] = "@class.outer",
-      },
-    },
-  },
+-- Turn on highlighting (and treesitter-based indent) for any filetype that
+-- has a parser installed.
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    local lang = vim.treesitter.language.get_lang(args.match) or args.match
+    if not vim.treesitter.language.add(lang) then
+      return
+    end
+    vim.treesitter.start(args.buf, lang)
+    vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end,
 })

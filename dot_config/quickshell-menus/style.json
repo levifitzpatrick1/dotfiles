@@ -1,0 +1,8 @@
+{
+    "cornerRadius": 16,
+    "backgroundOpacity": 0.75,
+    "fontFamily": "Comfortaa",
+    "animationMs": 150,
+    "titleScrim": true,
+    "hoverScale": 1.04
+}

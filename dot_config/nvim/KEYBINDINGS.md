@@ -1,6 +1,32 @@
-# Neovim Keybindings Cheatsheet
+# Neovim Cheatsheet
 
 **Leader Key:** `<Space>`
+
+---
+
+## Getting Started (if you've never used vim/nvim)
+
+Neovim is a **modal** editor: the same keys do different things depending on
+what mode you're in.
+
+- **Normal mode** — the default. Keys are commands, not text (`x` deletes a
+  character, `dd` deletes a line). You land here on startup and after
+  pressing `Esc`.
+- **Insert mode** — actually typing text, like a normal editor. Enter it with
+  `i` (insert before cursor) or `a` (after cursor). Leave it with `Esc` (or
+  `jk`, mapped below).
+- **Visual mode** — for selecting text. Enter with `v` (character-wise) or
+  `V` (line-wise).
+- **Command mode** — type `:` then a command, e.g. `:w` (save), `:q` (quit),
+  `:wq` (save and quit).
+
+Day-one workflow: open a file, `i` to type, `Esc` when done typing, `:w` to
+save. Everything else below builds on that.
+
+Every custom shortcut in this config starts with the **leader key**
+(`<Space>`). Press it and wait a second — a popup (which-key) shows every
+key you can press next, grouped and labeled. You don't need to memorize this
+file; when in doubt, press `<Space>` and read the menu.
 
 ---
 
@@ -49,7 +75,8 @@
 | `<Tab>` | Normal | Next buffer |
 | `<S-Tab>` | Normal | Previous buffer |
 | `<leader>x` | Normal | Close buffer |
-| `<leader>bp` | Normal | Pick buffer |
+| `<leader>fb` | Normal | Find/switch buffer (Telescope) |
+| `<leader>bh` | Normal | Go to home screen (dashboard) |
 
 ---
 
@@ -70,25 +97,15 @@
 | `<leader>fr` | Normal | Fuzzy find recent files |
 | `<leader>fs` | Normal | Find string in cwd (live grep) |
 | `<leader>fc` | Normal | Find string under cursor in cwd |
-
----
-
-## Harpoon (Quick File Navigation)
-
-| Key | Mode | Description |
-|-----|------|-------------|
-| `<leader>a` | Normal | Add file to harpoon |
-| `<C-e>` | Normal | Toggle harpoon menu |
-| `<C-h>` | Normal | Jump to harpoon file 1 |
-| `<C-j>` | Normal | Jump to harpoon file 2 |
-| `<C-k>` | Normal | Jump to harpoon file 3 |
-| `<C-l>` | Normal | Jump to harpoon file 4 |
-
-**Note:** Harpoon uses `<C-h/j/k/l>` which conflicts with window navigation. Use after adding files to harpoon.
+| `<leader>fb` | Normal | Find open buffers |
 
 ---
 
 ## LSP (Language Server Protocol)
+
+Language servers give you go-to-definition, autocomplete, diagnostics, etc.
+Mason installs them automatically the first time you open a matching
+filetype — no setup needed per language.
 
 | Key | Mode | Description |
 |-----|------|-------------|
@@ -153,70 +170,28 @@
 
 ---
 
-## Terminal (ToggleTerm)
-
-| Key | Mode | Description |
-|-----|------|-------------|
-| `<C-\>` | Normal/Terminal | Toggle terminal |
-| `<leader>tt` | Normal | Toggle floating terminal |
-| `<leader>th` | Normal | Toggle horizontal terminal |
-| `<leader>tv` | Normal | Toggle vertical terminal |
-
----
-
-## Debugging (DAP)
-
-| Key | Mode | Description |
-|-----|------|-------------|
-| `<leader>db` | Normal | Toggle breakpoint |
-| `<leader>dc` | Normal | Continue/Start debugging |
-| `<leader>di` | Normal | Step into |
-| `<leader>do` | Normal | Step over |
-| `<leader>dO` | Normal | Step out |
-| `<leader>dt` | Normal | Terminate debugging |
-| `<leader>du` | Normal | Toggle DAP UI |
-
----
-
-## Flash (Quick Navigation)
-
-Flash allows you to jump to any location on screen by typing a few characters.
-
-| Key | Mode | Description |
-|-----|------|-------------|
-| `s` | Normal | Flash forward search |
-| `S` | Normal | Flash backward search |
-
----
-
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| `:Mason` | Open Mason (LSP/DAP installer) |
+| `:Mason` | Open Mason (LSP installer) |
 | `:Lazy` | Open Lazy plugin manager |
 | `:checkhealth` | Check Neovim health |
 | `:Telescope` | Open Telescope picker |
-| `:Git` or `:G` | Open vim-fugitive Git interface |
+| `:TSInstall <lang>` | Install a treesitter parser for a language not in the default set |
 
 ---
 
 ## Tips
 
-1. **Which-key popup:** Press `<Space>` and wait 1 second to see available keybindings
-2. **Window conflict:** Harpoon `<C-h/j/k/l>` conflicts with window navigation - use window keys when not using harpoon
-3. **Leader key groups:**
+1. **Which-key popup:** Press `<Space>` and wait a second to see available keybindings.
+2. **Leader key groups:**
    - `<leader>f` - Find (Telescope)
    - `<leader>e` - Explorer
    - `<leader>h` - Git Hunk
-   - `<leader>t` - Toggle/Terminal
+   - `<leader>t` - Tab
    - `<leader>b` - Buffer
-   - `<leader>d` - Debug
    - `<leader>c` - Code (LSP)
    - `<leader>r` - Rename
    - `<leader>s` - Split
    - `<leader>x` - Diagnostics/Close
-
----
-
-Generated for Neovim configuration at: `C:\Users\lfitzpatrick\AppData\Local\nvim`

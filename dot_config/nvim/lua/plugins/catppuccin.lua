@@ -89,10 +89,10 @@ require("catppuccin").setup({
       ["@function.method.call"] = { fg = colors.blue },
 
       -- Types and classes (differentiated colors)
-      ["@type"] = { fg = colors.sapphire },  -- Types like RemoteHelper
+      ["@type"] = { fg = colors.sapphire },
       ["@type.builtin"] = { fg = colors.yellow },  -- Built-in types
       ["@type.definition"] = { fg = colors.sapphire },
-      ["@class"] = { fg = colors.sapphire },  -- Type references
+      ["@class"] = { fg = colors.sapphire },
       ["@constructor"] = { fg = colors.sapphire },  -- Constructor calls
 
       -- Properties and fields
@@ -123,7 +123,7 @@ require("catppuccin").setup({
       -- Comments
       ["@comment"] = { fg = colors.sky, style = { "italic" } },
 
-      -- Namespaces and modules (for URLSettings)
+      -- Namespaces and modules
       ["@namespace"] = { fg = colors.yellow },
       ["@module"] = { fg = colors.yellow },
 
@@ -133,15 +133,15 @@ require("catppuccin").setup({
       DiagnosticInfo = { fg = colors.sky },
       DiagnosticHint = { fg = colors.teal },
 
-      -- LSP semantic tokens for OmniSharp (User's custom colors)
-      ["@lsp.type.class"] = { fg = colors.blue },  -- Classes like RemoteHelper → Blue
+      -- LSP semantic tokens (server-provided, more precise than treesitter)
+      ["@lsp.type.class"] = { fg = colors.blue },
       ["@lsp.type.struct"] = { fg = colors.blue },
       ["@lsp.type.interface"] = { fg = colors.sapphire },
       ["@lsp.type.enum"] = { fg = colors.yellow },
       ["@lsp.type.typeParameter"] = { fg = colors.blue },
       ["@lsp.type.delegateName"] = { fg = colors.blue },
 
-      -- Modules (URLSettings) → Dark green
+      -- Modules
       ["@lsp.type.moduleName"] = { fg = colors.green },
       ["@lsp.type.namespace"] = { fg = colors.green },
 
@@ -149,16 +149,16 @@ require("catppuccin").setup({
       ["@lsp.type.class.static"] = { fg = colors.green },
       ["@lsp.type.staticSymbol"] = { fg = colors.green },
 
-      -- Properties (.URL_AccountType) → Purple
+      -- Properties
       ["@lsp.type.property"] = { fg = colors.lavender },
       ["@lsp.type.fieldName"] = { fg = colors.lavender },
       ["@lsp.type.property.static"] = { fg = colors.lavender },
 
       -- Variables
-      ["@lsp.type.variable"] = { fg = colors.text },  -- Local variables → White
-      ["@lsp.type.variable.static"] = { fg = colors.peach },  -- Global/static variables → Orange
-      ["@lsp.type.fieldName.static"] = { fg = colors.peach },  -- Static fields → Orange
-      ["@lsp.type.parameter"] = { fg = colors.text },  -- Parameters → White
+      ["@lsp.type.variable"] = { fg = colors.text },
+      ["@lsp.type.variable.static"] = { fg = colors.peach },
+      ["@lsp.type.fieldName.static"] = { fg = colors.peach },
+      ["@lsp.type.parameter"] = { fg = colors.text },
       ["@lsp.type.constantName"] = { fg = colors.peach },
       ["@lsp.type.enumMember"] = { fg = colors.peach },
 
@@ -212,9 +212,6 @@ require("catppuccin").setup({
       enabled = true,
       colored_indent_levels = false,
     },
-    flash = true,
-    harpoon = true,
-    trouble = true,
   },
 })
 

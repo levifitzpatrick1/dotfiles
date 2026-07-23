@@ -73,12 +73,10 @@ require("which-key").setup({
 require("which-key").add({
   { "<leader>f", group = "Find" },
   { "<leader>h", group = "Git Hunk" },
-  { "<leader>t", group = "Toggle/Terminal" },
+  { "<leader>t", group = "Tab" },
   { "<leader>b", group = "Buffer" },
   { "<leader>e", group = "Explorer" },
   { "<leader>c", group = "Code" },
   { "<leader>r", group = "Rename" },
   { "<leader>x", group = "Diagnostics" },
-  { "<leader>a", group = "Add to Harpoon" },
-  { "<leader>d", group = "Debug" },
 })

@@ -8,7 +8,7 @@ require("config.keymaps")
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -32,7 +32,7 @@ local plugins = {
     end,
   },
 
-  -- Telescope
+  -- Telescope (fuzzy finder)
   {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -42,23 +42,22 @@ local plugins = {
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Fuzzy find recent files" },
       { "<leader>fs", "<cmd>Telescope live_grep<cr>", desc = "Find string in cwd" },
       { "<leader>fc", "<cmd>Telescope grep_string<cr>", desc = "Find string under cursor in cwd" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find open buffers" },
     },
     config = function()
       require("plugins.telescope")
     end,
   },
 
-  -- Treesitter
+  -- Treesitter (syntax highlighting)
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
-    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     config = function()
       require("plugins.treesitter")
     end,
   },
-  "nvim-treesitter/nvim-treesitter-textobjects",
 
   -- Colorscheme
   {
@@ -108,11 +107,6 @@ local plugins = {
       require("plugins.cmp")
     end,
   },
-  "hrsh7th/cmp-nvim-lsp",
-  "hrsh7th/cmp-buffer",
-  "hrsh7th/cmp-path",
-  "L3MON4D3/LuaSnip",
-  "saadparwaiz1/cmp_luasnip",
 
   -- File Management
   {
@@ -127,14 +121,6 @@ local plugins = {
       require("plugins.nvim-tree")
     end,
   },
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("plugins.harpoon")
-    end,
-  },
 
   -- Git Integration
   {
@@ -144,10 +130,6 @@ local plugins = {
       require("plugins.gitsigns")
     end,
   },
-  {
-    "tpope/vim-fugitive",
-    cmd = { "Git", "G" },
-  },
 
   -- UI Enhancements
   {
@@ -156,14 +138,6 @@ local plugins = {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("plugins.lualine")
-    end,
-  },
-  {
-    "akinsho/bufferline.nvim",
-    lazy = false,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("plugins.bufferline")
     end,
   },
   {
@@ -193,73 +167,13 @@ local plugins = {
       require("plugins.comment")
     end,
   },
-  {
-    "folke/todo-comments.nvim",
-    event = { "BufReadPost", "BufNewFile" },
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("plugins.todo-comments")
-    end,
-  },
 
-  -- Productivity
+  -- Discoverability
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
     config = function()
       require("plugins.which-key")
-    end,
-  },
-  {
-    "akinsho/toggleterm.nvim",
-    cmd = { "ToggleTerm", "TermExec" },
-    config = function()
-      require("plugins.toggleterm")
-    end,
-  },
-  {
-    "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    cmd = { "Trouble", "TroubleToggle" },
-    config = function()
-      require("plugins.trouble")
-    end,
-  },
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("plugins.flash")
-    end,
-  },
-
-  -- Debugging
-  {
-    "mfussenegger/nvim-dap",
-    dependencies = {
-      "rcarriga/nvim-dap-ui",
-      "theHamsta/nvim-dap-virtual-text",
-      "nvim-neotest/nvim-nio",
-    },
-    keys = {
-      { "<leader>db", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle breakpoint" },
-      { "<leader>dc", "<cmd>DapContinue<cr>", desc = "Continue/Start debugging" },
-      { "<leader>di", "<cmd>DapStepInto<cr>", desc = "Step into" },
-      { "<leader>do", "<cmd>DapStepOver<cr>", desc = "Step over" },
-      { "<leader>dO", "<cmd>DapStepOut<cr>", desc = "Step out" },
-      { "<leader>dt", "<cmd>DapTerminate<cr>", desc = "Terminate debugging" },
-      { "<leader>du", "<cmd>lua require('dapui').toggle()<cr>", desc = "Toggle DAP UI" },
-    },
-    config = function()
-      require("plugins.dap")
-    end,
-  },
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    dependencies = { "mason.nvim", "mfussenegger/nvim-dap" },
-    cmd = { "DapInstall", "DapUninstall" },
-    config = function()
-      require("plugins.mason-dap")
     end,
   },
 

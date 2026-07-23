@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# QK-Config Launcher
+# This script runs the Windows version of QK Config using Wine.
+
+INSTALLED_PATH="$HOME/.wine/drive_c/Program Files (x86)/QK Config/DeviceDriver.exe"
+INSTALLER_PATH="$HOME/.local/share/qk-config/QK-Config-1.7.3.2.exe"
+
+# If the installed app exists, run it. Otherwise fall back to the installer.
+if [ -f "$INSTALLED_PATH" ]; then
+    # Ensure winebus is running so raw USB HID is active
+    wine net start winebus &>/dev/null
+    
+    cd "$(dirname "$INSTALLED_PATH")" || exit 1
+    exec wine "$INSTALLED_PATH" "$@"
+elif [ -f "$INSTALLER_PATH" ]; then
+    echo "Installed application not found. Running the installer..."
+    cd "$(dirname "$INSTALLER_PATH")" || exit 1
+    exec wine "$INSTALLER_PATH" "$@"
+else
+    echo "Error: QK-Config executable or installer not found." >&2
+    exit 1
+fi

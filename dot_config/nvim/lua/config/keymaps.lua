@@ -27,6 +27,11 @@ keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom split" })
 keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top split" })
 keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })
 
+-- Buffer management
+keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Next buffer" })
+keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
+keymap.set("n", "<leader>x", "<cmd>bdelete<CR>", { desc = "Close buffer" })
+
 -- Tab management
 keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
 keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })

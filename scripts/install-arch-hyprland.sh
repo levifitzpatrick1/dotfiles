@@ -43,6 +43,7 @@ official_packages=(
   stow
   swaync
   tailscale
+  tree-sitter-cli
   ttf-dejavu
   ttf-hack-nerd
   ttf-jetbrains-mono-nerd

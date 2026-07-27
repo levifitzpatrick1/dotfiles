@@ -27,6 +27,12 @@ hl.window_rule({
 })
 
 hl.window_rule({
+    name = "zed-opacity",
+    match = { class = "^(zed)$" },
+    opacity = "0.90 0.90",
+})
+
+hl.window_rule({
     name = "notepad-title",
     match = { title = "^.*[Nn]otepad.*$" },
     float = true,

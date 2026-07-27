@@ -291,5 +291,70 @@ palette = 15=#ffffff
 			os.Exit(1)
 		}
 	}
+
+	zedTarget := filepath.Join(home, ".config/zed/themes")
+	if err := os.MkdirAll(zedTarget, 0o755); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+	zedThemeContent := fmt.Sprintf(`{
+  "$schema": "https://zed.dev/schema/themes/v0.1.0.json",
+  "name": "Dynamic Wallpaper",
+  "author": "Antigravity",
+  "themes": [
+    {
+      "name": "Dynamic Wallpaper",
+      "appearance": "dark",
+      "style": {
+        "background": "%[1]s",
+        "border": "%[2]s",
+        "border.variant": "%[2]s",
+        "border.focused": "%[3]s",
+        "border.selected": "%[3]s",
+        "border.transparent": "#00000000",
+        "border.disabled": "%[2]s",
+        "elevated_housing.background": "%[1]s",
+        "housing.background": "%[1]s",
+        "status_bar.background": "%[1]s",
+        "title_bar.background": "%[1]s",
+        "toolbar.background": "%[1]s",
+        "tab_bar.background": "%[4]s",
+        "tab.inactive.background": "%[4]s",
+        "tab.active.background": "%[1]s",
+        "search.background": "%[4]s",
+        "panel.background": "%[1]s",
+        "pane.focused_view_shadow": "#00000000",
+        "text": "%[5]s",
+        "text.muted": "%[6]s",
+        "element.background": "%[1]s",
+        "element.hover": "%[7]s",
+        "element.active": "%[7]s",
+        "element.selected": "%[7]s",
+        "scrollbar.thumb.background": "%[2]s",
+        "scrollbar.thumb.hover_background": "%[7]s",
+        "syntax": {
+          "comment": { "color": "%[6]s", "font_style": "italic" },
+          "string": { "color": "#a6e3a1" },
+          "keyword": { "color": "#cba6f7", "font_weight": "bold" },
+          "function": { "color": "%[3]s" },
+          "type": { "color": "#f9e2af" },
+          "number": { "color": "#f5a97f" },
+          "boolean": { "color": "#f5a97f" },
+          "constant": { "color": "#f5a97f" },
+          "comment.doc": { "color": "%[6]s", "font_style": "italic" },
+          "property": { "color": "#94e2d5" },
+          "variable": { "color": "%[5]s" }
+        }
+      }
+    }
+  ]
+}
+`, hex(background), hex(backgroundSoft), hex(primary), hex(backgroundAlt), hex(text), hex(subtext), hex(backgroundHover))
+
+	if err := write(filepath.Join(zedTarget, "dynamic.json"), zedThemeContent); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+
 	fmt.Println("Theme generated successfully!")
 }

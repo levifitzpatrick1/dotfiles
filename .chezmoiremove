@@ -1,3 +1,8 @@
 .config/quickshell-games/games.go
 .local/bin/qk-config
 .local/share/applications/qk-config.desktop
+.config/autostart/cliphist-image.desktop
+.config/autostart/cliphist-text.desktop
+.config/autostart/openrgb.desktop
+.config/autostart/quickshell-osd.desktop
+.config/autostart/restore-wallpaper.desktop

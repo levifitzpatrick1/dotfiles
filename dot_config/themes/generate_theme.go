@@ -186,11 +186,11 @@ func main() {
 
 	// Completely neutral, flat, premium slate-gray dark theme colors
 	// This reduces noise by ensuring background surfaces and text don't shift hue
-	background := rgb{18, 18, 22}        // #121216
-	backgroundAlt := rgb{24, 24, 28}     // #18181c
-	backgroundSoft := rgb{30, 30, 36}    // #1e1e24
-	backgroundHover := rgb{40, 40, 48}   // #282830
-	surfaceHigh := rgb{50, 50, 60}       // #32323c
+	background := hsvToRGB(hue, 0.08, 0.08)
+	backgroundAlt := hsvToRGB(hue, 0.09, 0.11)
+	backgroundSoft := hsvToRGB(hue, 0.10, 0.14)
+	backgroundHover := hsvToRGB(hue, 0.12, 0.18)
+	surfaceHigh := hsvToRGB(hue, 0.14, 0.22)
 	text := rgb{235, 235, 240}          // #ebebf0
 	subtext := rgb{160, 160, 170}        // #a0a0aa
 

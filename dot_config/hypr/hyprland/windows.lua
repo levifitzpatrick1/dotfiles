@@ -29,7 +29,7 @@ hl.window_rule({
 hl.window_rule({
     name = "zed-opacity",
     match = { class = "^(zed)$" },
-    opacity = "0.90 0.90",
+    opacity = "0.95 0.95",
 })
 
 hl.window_rule({

@@ -1,6 +1,6 @@
 config-file = ?../themes/current/ghostty.conf
 
-background-opacity = 0.90
+background-opacity = 0.80
 background-blur = 24
 minimum-contrast = 1.15
 

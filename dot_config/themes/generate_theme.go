@@ -186,11 +186,11 @@ func main() {
 
 	// Completely neutral, flat, premium slate-gray dark theme colors
 	// This reduces noise by ensuring background surfaces and text don't shift hue
-	background := hsvToRGB(hue, 0.08, 0.08)
-	backgroundAlt := hsvToRGB(hue, 0.09, 0.11)
-	backgroundSoft := hsvToRGB(hue, 0.10, 0.14)
-	backgroundHover := hsvToRGB(hue, 0.12, 0.18)
-	surfaceHigh := hsvToRGB(hue, 0.14, 0.22)
+	background := rgb{18, 18, 22}        // #121216
+	backgroundAlt := rgb{24, 24, 28}     // #18181c
+	backgroundSoft := rgb{30, 30, 36}    // #1e1e24
+	backgroundHover := rgb{40, 40, 48}   // #282830
+	surfaceHigh := rgb{50, 50, 60}       // #32323c
 	text := rgb{235, 235, 240}          // #ebebf0
 	subtext := rgb{160, 160, 170}        // #a0a0aa
 
@@ -291,70 +291,5 @@ palette = 15=#ffffff
 			os.Exit(1)
 		}
 	}
-
-	zedTarget := filepath.Join(home, ".config/zed/themes")
-	if err := os.MkdirAll(zedTarget, 0o755); err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
-	}
-	zedThemeContent := fmt.Sprintf(`{
-  "$schema": "https://zed.dev/schema/themes/v0.1.0.json",
-  "name": "Dynamic Wallpaper",
-  "author": "Antigravity",
-  "themes": [
-    {
-      "name": "Dynamic Wallpaper",
-      "appearance": "dark",
-      "style": {
-        "background": "%[1]s",
-        "border": "%[2]s",
-        "border.variant": "%[2]s",
-        "border.focused": "%[3]s",
-        "border.selected": "%[3]s",
-        "border.transparent": "#00000000",
-        "border.disabled": "%[2]s",
-        "elevated_housing.background": "%[1]s",
-        "housing.background": "%[1]s",
-        "status_bar.background": "%[1]s",
-        "title_bar.background": "%[1]s",
-        "toolbar.background": "%[1]s",
-        "tab_bar.background": "%[4]s",
-        "tab.inactive.background": "%[4]s",
-        "tab.active.background": "%[1]s",
-        "search.background": "%[4]s",
-        "panel.background": "%[1]s",
-        "pane.focused_view_shadow": "#00000000",
-        "text": "%[5]s",
-        "text.muted": "%[6]s",
-        "element.background": "%[1]s",
-        "element.hover": "%[7]s",
-        "element.active": "%[7]s",
-        "element.selected": "%[7]s",
-        "scrollbar.thumb.background": "%[2]s",
-        "scrollbar.thumb.hover_background": "%[7]s",
-        "syntax": {
-          "comment": { "color": "%[6]s", "font_style": "italic" },
-          "string": { "color": "#a6e3a1" },
-          "keyword": { "color": "#cba6f7", "font_weight": "bold" },
-          "function": { "color": "%[3]s" },
-          "type": { "color": "#f9e2af" },
-          "number": { "color": "#f5a97f" },
-          "boolean": { "color": "#f5a97f" },
-          "constant": { "color": "#f5a97f" },
-          "comment.doc": { "color": "%[6]s", "font_style": "italic" },
-          "property": { "color": "#94e2d5" },
-          "variable": { "color": "%[5]s" }
-        }
-      }
-    }
-  ]
-}
-`, hex(background), hex(backgroundSoft), hex(primary), hex(backgroundAlt), hex(text), hex(subtext), hex(backgroundHover))
-
-	if err := write(filepath.Join(zedTarget, "dynamic.json"), zedThemeContent); err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
-	}
-
 	fmt.Println("Theme generated successfully!")
 }

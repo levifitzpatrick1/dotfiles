@@ -1,15 +1,24 @@
 #!/bin/sh
 set -eu
 
-source_file="$HOME/.config/quickshell-games/games.go"
+source_dir="$HOME/.config/quickshell-games"
 cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/dotfiles-tools"
 binary="$cache_dir/game-launcher"
 
 mkdir -p "$cache_dir"
-if [ ! -x "$binary" ] || [ "$source_file" -nt "$binary" ]; then
+
+rebuild=0
+if [ ! -x "$binary" ]; then
+  rebuild=1
+elif find "$source_dir" \( -name "*.go" -o -name "go.mod" \) -newer "$binary" | grep -q .; then
+  rebuild=1
+fi
+
+if [ "$rebuild" -eq 1 ]; then
   temporary="$binary.tmp"
-  go build -o "$temporary" "$source_file"
+  (cd "$source_dir" && go build -o "$temporary")
   mv "$temporary" "$binary"
 fi
 
 exec "$binary" "$@"
+

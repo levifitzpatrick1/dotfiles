@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=QK Config
-Comment=Configure Qwertykeys Keyboards
-Exec=/home/levi/.local/bin/qk-config
-Icon=keyboard
-Terminal=false
-Type=Application
-Categories=Utility;Settings;
-StartupNotify=true

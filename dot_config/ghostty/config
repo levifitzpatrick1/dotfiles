@@ -28,10 +28,19 @@ selection-clear-on-typing = true
 
 # 1. Custom Shader Animations (Cursor Trails & Effects)
 # Enable one of these shaders to add beautiful animations to your cursor:
-custom-shader = shaders/cursor_warp.glsl      # (Enabled) Smooth Neovide-style cursor trail
-# custom-shader = shaders/cursor_tail.glsl      # Comet-like tail (Kitty terminal style)
-# custom-shader = shaders/ripple_cursor.glsl     # Expanding ripple ring when moving
-# custom-shader = shaders/sonic_boom_cursor.glsl # Expanding pulse circle when moving
+# Note: Ghostty does not support inline comments, so comments must be on separate lines.
+
+# Smooth Neovide-style cursor trail
+# custom-shader = shaders/cursor_warp.glsl
+
+# Comet-like tail (Kitty terminal style)
+custom-shader = shaders/cursor_tail.glsl
+
+# Expanding ripple ring when moving
+# custom-shader = shaders/ripple_cursor.glsl
+
+# Expanding pulse circle when moving
+# custom-shader = shaders/sonic_boom_cursor.glsl
 
 # Crucial: Ensures shader animations render continuously and smoothly
 custom-shader-animation = always

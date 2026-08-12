@@ -1,7 +1,18 @@
 #!/bin/sh
 set -eu
 
-runtime="$HOME/.local/lib/linux-wallpaperengine"
-export LD_LIBRARY_PATH="$runtime:$runtime/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
-cd "$runtime"
-exec "$runtime/linux-wallpaperengine" "$@"
+if [ -x /usr/bin/linux-wallpaperengine ]; then
+  exec /usr/bin/linux-wallpaperengine "$@"
+elif [ -x /opt/linux-wallpaperengine/linux-wallpaperengine ]; then
+  export LD_LIBRARY_PATH="/opt/linux-wallpaperengine/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+  cd /opt/linux-wallpaperengine
+  exec ./linux-wallpaperengine "$@"
+elif [ -d "$HOME/.local/lib/linux-wallpaperengine" ] && [ -x "$HOME/.local/lib/linux-wallpaperengine/linux-wallpaperengine" ]; then
+  runtime="$HOME/.local/lib/linux-wallpaperengine"
+  export LD_LIBRARY_PATH="$runtime:$runtime/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+  cd "$runtime"
+  exec "$runtime/linux-wallpaperengine" "$@"
+else
+  echo "linux-wallpaperengine not found" >&2
+  exit 1
+fi
